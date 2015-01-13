@@ -12,9 +12,11 @@ if($_POST['btnSave']!='')
 	mysql_query($sql);
 }
 
-$sqlList			=	"SELECT name, username, classroom FROM useradmin WHERE is_admin!=1 ORDER BY name ASC";
+$sqlList			=	"SELECT uid, name, username, classroom FROM useradmin WHERE is_admin!=1 ORDER BY name ASC";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
+
+
 ?>
 <?php include "header.php";   	?>  
 <style>
@@ -124,9 +126,9 @@ function submitCard(card)
 								<td height="5">&nbsp;<?php echo $rowList['username']; ?></td>
 								<td height="5">&nbsp;<?php echo $rowList['classroom']; ?></td>
 								<td height="5" width="230px" align="center" style="height:30px">
-									<input type="button" name="btnView" id="btnView" value="Veiw Student List" style="cursor:pointer" onclick="javascript:location.href='studentListing.php?tid=<?php echo $rowList['uid']; ?>">
-									<input type="button" name="btnDel" id="btnDel" value="Delete">
-								</td>
+									<input type="button" name="btnView" id="btnView" value="Veiw Student List" style="cursor:pointer" onclick="javascript:location.href='studentListing.php?tid=<?php echo $rowList['uid']; ?>'">
+						                        <input type="button" name="btnDel" id="btnDel" value="Delete" style="cursor:pointer" onclick="'test<?php echo 'test'; ?>'">
+							</td>
 							</tr>
 							<?php } 
 							} 
