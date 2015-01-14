@@ -19,6 +19,12 @@ if($_POST["txtUserName"]!='')
 </head>
 
 <body>
+<div class="outer">
+        <?php include "../header.php"; ?>
+        <div id="mainarea">
+        <div id="mainarea">
+                <?php include "../leftmenu.php"; ?>
+                <div id="right-nav">
 <div class="heading">Welcome to our website!</div>
 	<div class="dot2"></div>
 	<div id="main" align="center" style="padding-top:150px">

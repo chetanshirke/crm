@@ -7,11 +7,11 @@ if($_POST['btnSave']!='')
 	$teacherId  = $_POST['hiddenteacher'];
 	
 	$dateadded = date("Y-m-d H:i:s");
-	echo $sql = "INSERT INTO studentdetails (studentName, teacherId, dateadded) VALUES ('".$studName."','".$teacherId."','".$dateadded."')";
+	echo $sql = "INSERT INTO studentdetails ( studentName, teacherId, dateadded) VALUES ('".$studName."','".$teacherId."','".$dateadded."')";
 	mysql_query($sql);
 }
 
-$sqlList			=	"SELECT * FROM studentdetails WHERE teacherId=".$_GET['tid']." ORDER BY studentName ASC";
+$sqlList			=	"SELECT studentid, studentName FROM studentdetails WHERE teacherId=".$_GET['tid']." ORDER BY studentName ASC";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
 ?>
@@ -31,6 +31,57 @@ $totalList			= 	mysql_num_rows($resList);
 	background-color:#6699CC;
 }
 </style>
+
+
+
+<script language="javascript" type="text/javascript">
+<!-- 
+//Browser Support Code
+function ajaxFunction(){
+ var ajaxRequest;  // The variable that makes Ajax possible!
+	
+ try{
+   // Opera 8.0+, Firefox, Safari
+   ajaxRequest = new XMLHttpRequest();
+ }catch (e){
+   // Internet Explorer Browsers
+   try{
+      ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+   }catch (e) {
+      try{
+         ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+      }catch (e){
+         // Something went wrong
+         alert("Your browser broke!");
+         return false;
+      }
+   }
+ }
+ // Create a function that will receive data 
+ // sent from the server and will update
+ // div section in the same page.
+ ajaxRequest.onreadystatechange = function(){
+   if(ajaxRequest.readyState == 4){
+      var ajaxDisplay = document.getElementById('ajaxDiv');
+      ajaxDisplay.innerHTML = ajaxRequest.responseText;
+   }
+ }
+ // Now get the value from user and pass it to
+ // server script.
+ var studentid = document.getElementById('studentid').value;
+ var status = document.getElementById('status').value;
+
+ var queryString = "?studentid=" + studentid ;
+ queryString +=  "&status=" + status;
+ ajaxRequest.open("GET", "attstatus.php" + 
+                              queryString, true);
+ ajaxRequest.send(null); 
+}
+//-->
+</script>
+
+
+
 <script language="javascript">
 function submitCard(card)
 {
@@ -38,6 +89,7 @@ function submitCard(card)
 	document.frmReport.submit();
 }
 </script>
+
 <div id="menu">
 	<ul>
 		<li><a href="#" class="active"><b>Student Listing</b></a></li>
@@ -104,7 +156,15 @@ function submitCard(card)
 								<td height="5" align="center"><?php echo $i++; ?>.</td>
 								<td height="5">&nbsp;<?php echo $rowList['studentName']; ?></td>
 								<td height="5" width="230px" align="center" style="height:30px">
-									<input type="button" name="btnDel" id="btnDel" value="Delete">
+								<form name='myForm'>
+								<input type="hidden" id="studentid" name="studentid" value="<%= '<?php echo $rowList['studentid']; ?>' %>">
+								<select id='status'>
+								<option value="absent">Absent</option>
+								<option value="present">Present</option>
+								<input type='button' onclick='ajaxFunction()' value='Mark'/>
+								</select>
+								</form>
+								<div id='ajaxDiv'></div>
 								</td>
 							</tr>
 							<?php } 
