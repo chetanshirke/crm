@@ -37,7 +37,7 @@ BODY{margin:0px;font-size:13px;font-family:arial;color:#000000; background-image
 .sap
 {background-image:url(../images/sap.gif); background-repeat:repeat-y;height:41px;width:1px;font-size:1px;float:left;}
 #briefcase
-{background-image:url(../images/mainlogo.png); background-repeat:no-repeat; width:300px; height:189px; float:left; margin-top:21px;}
+{background-image:url(../images/mainlogo.png); background-repeat:no-repeat; width:921px; height:60px; float:left; margin-top:31px;}
 #slogan-bg
 {width:276px; height:90px; float:left; font-size:18px; color:#ffffff; padding-top:95px; padding-left:20px;}
 #gap3

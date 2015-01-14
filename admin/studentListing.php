@@ -144,6 +144,7 @@ function submitCard(card)
 								<td height="5" width="50px" align="center">Sr.No</td>
 								<td height="5">&nbsp;Student Name</td>
 								<td height="5" align="center">Action</td>
+								<td height="5" align="center">Status</td>
 							</tr>
 							<?php 
 							if($totalList > 0)	
@@ -157,14 +158,14 @@ function submitCard(card)
 								<td height="5">&nbsp;<?php echo $rowList['studentName']; ?></td>
 								<td height="5" width="230px" align="center" style="height:30px">
 								<form name='myForm'>
-								<input type="hidden" id="studentid" name="studentid" value="<%= '<?php echo $rowList['studentid']; ?>' %>">
+								<input type="hidden" id="studentid" name="studentid" value='<?php echo $rowList['studentid']; ?>'>
 								<select id='status'>
 								<option value="absent">Absent</option>
 								<option value="present">Present</option>
 								<input type='button' onclick='ajaxFunction()' value='Mark'/>
 								</select>
 								</form>
-								<div id='ajaxDiv'></div>
+								<td height="5" align="center"><div id='ajaxDiv'></div></td>
 								</td>
 							</tr>
 							<?php } 

@@ -10,5 +10,6 @@ $status = mysql_real_escape_string($status);
 $query = "INSERT INTO Attendance (studentid, date, status) VALUES ('$studentid','15','$status') ON DUPLICATE KEY UPDATE status = '$status'";
 	//Execute query
 $qry_result = mysql_query($query) or die(mysql_error());
-echo 'Updated';
+
+echo "$status Marked";
 ?>

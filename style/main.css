@@ -151,13 +151,6 @@ a:active, a:focus {
 	margin:25px 0px 0px 0px;
 }
 
-/*BANNER*/
-#banner {
-	float:left;
-	width:976px;
-	height:266px;
-	border:2px solid #a7a7a7;
-}
 /*CONTENT*/
 #content {
 	float:left;
