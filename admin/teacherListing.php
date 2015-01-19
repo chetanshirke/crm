@@ -1,18 +1,6 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
 
-if($_POST['btnSave']!='')
-{
-	$name = $_POST['txtname'];
-	$pass = $_POST['txtpass'];
-	$contact = $_POST['txtcontact'];
-	$email = $_POST['txtemail'];
-	$class  = $_POST['txtclass'];
-
-	$sql = "INSERT INTO EMASTER (EMPNAME, EMPPASS, EMPPHONE, EMPEMAIL, CID) VALUES ('".$name."','".$pass."','".$contact."','".$email."','".$class."')";
-	mysql_query($sql);
-}
-
 $sqlList			=	"select a.EMPID, a.EMPNAME, a.EMPPASS, a.EMPPHONE, a.EMPEMAIL, a.STATUS, a.is_admin, b.CNAME FROM EMASTER a, CMASTER b where a.CID = b.CID and a.is_admin!=1 ORDER BY EMPID ASC";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
@@ -91,66 +79,6 @@ function ajaxFunction(){
 </div>  
 <div id="content" align="center">
 <table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
-	<tr>
-		<td height="10">&nbsp;</td>
- 	</tr> 
-	<tr>
-		<td align="left" valign="top" height="30px" style="padding-left:10px;border-bottom:1px solid #999999;"><b><u>Welcome - Admin</u></b></td>
-	</tr>
-	<tr>
-		<td align="left" valign="top">
-			<table width="580px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-				<tr>
-					<td height="40" style="padding-left:10px;"><input type="button" name="btnAdd" id="btnAdd" value="Add New"></td>
-				</tr>
-				<tr>
-					<td height="40" style="padding-left:10px;">
-						<form name="frm" action="" method="post">
-						<table width="580px" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
-							<tr>
-								<td width="120px" style="height:30px">User Name:</td>
-								<td>
-									<input type="text" name="txtname" id="txtname" value="" style="width:230px">
-								</td>
-							</tr>
-							<tr>
-								<td width="120px" style="height:30px">Password:</td>
-								<td>
-									<input type="text" name="txtpass" id="txtpass" value="" style="width:230px">
-								</td>
-							</tr>
-							<tr>
-								<td style="height:30px">Contact No:</td>
-								<td>
-									<input type="text" name="txtcontact" id="txtcontact" value="" style="width:230px">
-								</td>
-							</tr>
-							<tr>
-								<td style="height:30px">Email:</td>
-								<td>
-									<input type="text" name="txtemail" id="txtemail" value="" style="width:230px">
-								</td>
-							</tr>
-  							<tr>
-                                                                <td style="height:30px">ClassRoom:</td>
-                                                                <td>
-                                                                        <input type="text" name="txtclass" id="txtclass" value="" style="width:230px">
-                                                                </td>
-
-                                                        </tr>
-							<tr>
-								<td></td>
-								<td align="left" style="height:40px">
-									<input type="submit" name="btnSave" id="btnSave" value="Save">
-								</td>
-							</tr>
-						</table>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td height="20" align="right">&nbsp;</td>
-				</tr>
 				<tr>
 					<td height="40" style="padding-left:10px;">
 						<table width="680px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
@@ -190,17 +118,11 @@ function ajaxFunction(){
 						</table>
 					</td>
 				</tr>
-				<tr>
-					<td height="20" align="right">
-						<form name="frmReport" action="reporting.php" method="post">
-							<input type="hidden" name="txtCard" id="txtCard" value="">
-						</form>
-					</td>
-				</tr>
 			</table>
 		</td>
 	</tr>
-	
+
+    </tr>
 </table>
 </div>
 <?php //include "footer.php";	?>
