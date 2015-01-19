@@ -15,29 +15,13 @@ BODY{margin:0px;font-size:13px;font-family:arial;color:#000000; background-image
 .tag
 {font-size:12px; font-weight:bold; color:#AEAEAE; padding-left:10px;}
 #header
-{background-image:url(../images/header-bg.jpg); background-repeat:no-repeat; height:290px;}
+{background-image:url(../images/header-bg.jpg); background-repeat:no-repeat; height:300px;}
 #links-bg
 {height:50px; clear:left; margin-left:40px; padding-top:30px;}
-#home
-{background-image:url(../images/home.jpg); background-repeat:no-repeat; background-position:right center;width:50px;height:50px;float:left;}
-#services
-{background-image:url(../images/services.jpg); background-repeat:no-repeat; background-position:right center;width:50px;height:50px;float:left;}
-#projects
-{background-image:url(../images/projects.jpg); background-repeat:no-repeat; background-position:right center;width:50px;height:50px;float:left;}
-#solutions
-{background-image:url(../images/solutions.jpg); background-repeat:no-repeat; background-position:right center;width:50px;height:50px;float:left;}
-#contact
-{background-image:url(../images/contact.jpg); background-repeat:no-repeat; background-position:right center;width:50px;height:50px;float:left;}
-.toplinks
-{font-family:"trebuchet MS";font-size:13px;text-transform:uppercase;font-weight:bold;width:95px;float:left;text-align:center; margin-top:15px;}
-.toplinks a
-{color:#333333;text-decoration:none;}
-.toplinks a:hover
-{color:#F45C71;text-decoration:none;}
 .sap
 {background-image:url(../images/sap.gif); background-repeat:repeat-y;height:41px;width:1px;font-size:1px;float:left;}
 #briefcase
-{background-image:url(../images/mainlogo.png); background-repeat:no-repeat; width:921px; height:60px; float:left; margin-top:31px;}
+{background-image:url(../images/mainlogo.png); background-repeat:no-repeat; width:921px; height:0px; float:left; margin-top:0px;}
 #slogan-bg
 {width:276px; height:90px; float:left; font-size:18px; color:#ffffff; padding-top:95px; padding-left:20px;}
 #gap3
