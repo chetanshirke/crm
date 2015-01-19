@@ -13,6 +13,10 @@ if($_POST['btnSave']!='')
 	mysql_query($sql);
 }
 
+$sqlList                        =       "SELECT CNAME from CMASTER  ORDER BY CNAME ASC";
+$resList                        =       mysql_query($sqlList) or die(mysql_error());
+$totalList                      =       mysql_num_rows($resList);
+
 ?>
 <?php include "header.php";   	?>  
 
@@ -40,12 +44,10 @@ function ajaxFunction(){
       ajaxDisplay.innerHTML = ajaxRequest.responseText;
    }
  }
- var studentid = document.getElementById('studentid').value;
  var status = document.getElementById('status').value;
 
- var queryString = "?studentid=" + studentid ;
- queryString +=  "&status=" + status;
- ajaxRequest.open("GET", "attstatus.php" + 
+ var queryString = "?status=" + status;
+ ajaxRequest.open("GET", "classid.php" + 
                               queryString, true);
  ajaxRequest.send(null); 
 }
@@ -69,7 +71,7 @@ function ajaxFunction(){
 </style>
 <div id="menu">
 	<ul>
-		<li><a href="#" class="active"><b>Teacher Listing</b></a></li>
+		<li><a href="/admin/teacherListing.php" class="active"><b>Teachers Details</b></a></li>
 		<li><a href="index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="clr"></div>
@@ -113,14 +115,27 @@ function ajaxFunction(){
 							</tr>
   							<tr>
                                                                 <td style="height:30px">ClassRoom:</td>
-                                                                <td>
-                                                                        <input type="text" name="txtclass" id="txtclass" value="" style="width:230px">
-                                                                </td>
+                                                                <td height="5">
+                                                                <select id='status'>
+							<?php
+                                                        if($totalList > 0)
+                                                        {
+                                                                $i=1;
+                                                                while($rowList=mysql_fetch_assoc($resList))
+                                                                {
+                                                        ?>
 
+                                                                <option value='<?php echo $rowList['CNAME']; ?>'><?php echo $rowList['CNAME']; ?></option>
+							<?php  }; } ?>
+                                                                <input type='button' onclick='ajaxFunction()' value='select'/>
+                                                                </select>
+                                                                </td>
+                                                                <td height="5" align="center"><div id='ajaxDiv'></div></td>
+                                                                </td>
                                                         </tr>
 							<tr>
 								<td></td>
-								<td align="left" style="height:40px">
+								<td align="right" style="height:20px">
 									<input type="submit" name="btnSave" id="btnSave" value="Save">
 								</td>
 							</tr>
@@ -155,7 +170,7 @@ function ajaxFunction(){
                </tr>
                <tr>
                		<td></td>
-                        <td align="left" style="height:40px"><input type="submit" name="btnstud" id="btnstud" value="Save"></td>
+                        <td align="right" style="height:20px"><input type="submit" name="btnstud" id="btnstud" value="Save"></td>
                </tr>
                </form>
                </table>

@@ -72,7 +72,7 @@ function ajaxFunction(){
 </style>
 <div id="menu">
 	<ul>
-		<li><a href="#" class="active"><b>Teacher Listing</b></a></li>
+		<li><a href="#" class="active"><b>Teacher Details</b></a></li>
 		<li><a href="index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="clr"></div>
