@@ -14,7 +14,7 @@ if($_POST["txtUserName"]!='')
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Marketing Business</title>
+<title>SEIPS-INTRANET - Login</title>
 <link href="../style/style.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -23,9 +23,8 @@ if($_POST["txtUserName"]!='')
         <?php include "../header.php"; ?>
         <div id="mainarea">
         <div id="mainarea">
-                <?php include "../leftmenu.php"; ?>
                 <div id="right-nav">
-<div class="heading">Welcome to our website!</div>
+<div class="heading">Welcome to our SEIPS INTRANET!</div>
 	<div class="dot2"></div>
 	<div id="main" align="center" style="padding-top:150px">
 	<table class="login">
