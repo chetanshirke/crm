@@ -12,7 +12,7 @@ function accountLogin($username, $password)
 		$accountuserid		= $rsLogin['EMPID'];
 		$accountusername	= $rsLogin['EMPNAME'];
 		if($rsLogin['is_admin']==1)
-		header("Location:teacherListing.php");
+		header("Location:adminpanel.php");
 		else
 		header("Location:studentListing.php?tid=".$accountuserid);
 		exit;

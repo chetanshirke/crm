@@ -99,47 +99,6 @@ function ajaxFunction(){
 		<td align="left" valign="top">
 			<table width="580px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 				<tr>
-					<td height="40" style="padding-left:10px;"><input type="button" name="btnAdd" id="btnAdd" value="Add New"></td>
-				</tr>
-				<tr>
-					<td height="40" style="padding-left:10px;">
-						<form name="frm" action="" method="post">
-						<table width="580px" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
-							<tr>
-								<td width="170px" style="height:30px">Student Name:</td>
-								<td>
-									<input type="text" name="txtname" id="txtname" value="" style="width:230px">
-								</td>
-							</tr>
-							<tr>
-                                                                <td width="170px" style="height:30px">Student Contact:</td>
-                                                                <td>
-                                                                        <input type="text" name="txtcontact" id="txtcontact" value="null" style="width:230px">
-                                                                </td>
-							</tr>
-							<tr>
-                                                                <td width="170px" style="height:30px">Student Email:</td>
-                                                                <td>
-                                                                        <input type="text" name="txtemail" id="txtemail" value="null" style="width:230px">
-                                                                </td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>
-									<input type="hidden" name="hiddenteacher" id="hiddenteacher" value="<?php echo $_GET['tid']?>" style="width:230px">
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td align="left" style="height:40px">
-									<input type="submit" name="btnSave" id="btnSave" value="Save">
-								</td>
-							</tr>
-						</table>
-						</form>
-					</td>
-				</tr>
-				<tr>
 					<td height="20" align="right">&nbsp;</td>
 				</tr>
 				<tr>
