@@ -23,6 +23,4 @@ $db = new Database();
 
 require_once($rootpath."includes/functions.php");
 
-$class=array("NULL","T-REX","Stegs","abc");
-
 ?>
