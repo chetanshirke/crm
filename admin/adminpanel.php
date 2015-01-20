@@ -7,49 +7,41 @@ if($_POST['btnSave']!='')
 	$pass = $_POST['txtpass'];
 	$contact = $_POST['txtcontact'];
 	$email = $_POST['txtemail'];
-	$class  = $_POST['txtclass'];
+	$class = $_POST['txtclass'];
 
 	$sql = "INSERT INTO EMASTER (EMPNAME, EMPPASS, EMPPHONE, EMPEMAIL, CID) VALUES ('".$name."','".$pass."','".$contact."','".$email."','".$class."')";
 	mysql_query($sql);
 }
 
-$sqlList                        =       "SELECT CNAME from CMASTER  ORDER BY CNAME ASC";
+$sqlList                        =       "SELECT CNAME from CMASTER";
 $resList                        =       mysql_query($sqlList) or die(mysql_error());
 $totalList                      =       mysql_num_rows($resList);
 
 ?>
 <?php include "header.php";   	?>  
 
-<script language="javascript" type="text/javascript">
-function ajaxFunction(){
- var ajaxRequest;  // The variable that makes Ajax possible!
-        
- try{
-   ajaxRequest = new XMLHttpRequest();
- }catch (e){
-   try{
-      ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-   }catch (e) {
-      try{
-         ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-      }catch (e){
-         alert("Your browser broke!");
-         return false;
-      }
-   }
- }
- ajaxRequest.onreadystatechange = function(){
-   if(ajaxRequest.readyState == 4){
-      var ajaxDisplay = document.getElementById('ajaxDiv');
-      ajaxDisplay.innerHTML = ajaxRequest.responseText;
-   }
- }
- var status = document.getElementById('status').value;
 
- var queryString = "?status=" + status;
- ajaxRequest.open("GET", "classid.php" + 
-                              queryString, true);
- ajaxRequest.send(null); 
+<script>
+function classid(str) {
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET","classid.php?q="+str,true);
+        xmlhttp.send();
+    }
 }
 </script>
 
@@ -116,7 +108,7 @@ function ajaxFunction(){
   							<tr>
                                                                 <td style="height:30px">ClassRoom:</td>
                                                                 <td height="5">
-                                                                <select id='status'>
+								<select onchange="classid(this.value)">
 							<?php
                                                         if($totalList > 0)
                                                         {
@@ -127,10 +119,8 @@ function ajaxFunction(){
 
                                                                 <option value='<?php echo $rowList['CNAME']; ?>'><?php echo $rowList['CNAME']; ?></option>
 							<?php  }; } ?>
-                                                                <input type='button' onclick='ajaxFunction()' value='select'/>
                                                                 </select>
-                                                                </td>
-                                                                <td height="5" align="center"><div id='ajaxDiv'></div></td>
+								<p>classid: <span id="txtHint"></span></p>
                                                                 </td>
                                                         </tr>
 							<tr>
