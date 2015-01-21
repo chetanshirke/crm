@@ -25,4 +25,11 @@ function accountLogin($username, $password)
 	}
 	
 }
+
+
+function loginid($user)
+{
+	header("Location:addstudent.php?tid=".$user);
+}
+
 ?>

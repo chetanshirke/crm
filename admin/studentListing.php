@@ -17,7 +17,7 @@ $sqlList			=	"SELECT SID, SNAME, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']."
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
 ?>
-<?php include "header.php";   	?>  
+<?php include "header.php"; ?>  
 <style>
 .rowHead
 {
@@ -85,6 +85,7 @@ function ajaxFunction(){
 
 <div id="menu">
 	<ul>
+		<li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add New Student</b></a></li>
 		<li><a href="#" class="active"><b>Student Listing</b></a></li>
 		<li><a href="index.php?logout"><b>Logout</b></a></li>
 	</ul>

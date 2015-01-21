@@ -8,6 +8,7 @@ if($_POST['btnSave']!='')
 	$contact = $_POST['txtcontact'];
 	$email = $_POST['txtemail'];
 	$class = $_POST['txtclass'];
+        echo $class;
 
 	$sql = "INSERT INTO EMASTER (EMPNAME, EMPPASS, EMPPHONE, EMPEMAIL, CID) VALUES ('".$name."','".$pass."','".$contact."','".$email."','".$class."')";
 	mysql_query($sql);
@@ -19,7 +20,6 @@ $totalList                      =       mysql_num_rows($resList);
 
 ?>
 <?php include "header.php";   	?>  
-
 
 <script>
 function classid(str) {
@@ -120,7 +120,7 @@ function classid(str) {
                                                                 <option value='<?php echo $rowList['CNAME']; ?>'><?php echo $rowList['CNAME']; ?></option>
 							<?php  }; } ?>
                                                                 </select>
-								<p>classid: <span id="txtHint"></span></p>
+								<input type="text" id="txtHint" placeholder="select option"><br>
                                                                 </td>
                                                         </tr>
 							<tr>
@@ -136,37 +136,6 @@ function classid(str) {
 				<tr>
 					<td height="20" align="right">&nbsp;</td>
 				</tr>
-
-	<tr><td height="10">&nbsp;Add Students details here</td></tr> 
-        <tr>
-        <td height="40" style="padding-left:10px;">
-        	<form name="frm" action="" method="post">
-                <table width="580px" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
-                <tr>
-			<td width="170px" style="height:30px">Student Name:</td>
-                	<td><input type="text" name="txtname" id="txtname" value="" style="width:230px"></td>
-                </tr>
-                <tr>
-                	<td width="170px" style="height:30px">Student Contact:</td>
-               		<td><input type="text" name="txtcontact" id="txtcontact" value="null" style="width:230px"></td>
-               </tr>
-               <tr>
-               		<td width="170px" style="height:30px">Student Email:</td>
-               		<td><input type="text" name="txtemail" id="txtemail" value="null" style="width:230px"></td>
-               </tr>
-               <tr>
-               		<td></td>
-               		<td> <input type="hidden" name="hiddenteacher" id="hiddenteacher" value="<?php echo $_GET['tid']?>" style="width:230px"></td>
-               </tr>
-               <tr>
-               		<td></td>
-                        <td align="right" style="height:20px"><input type="submit" name="btnstud" id="btnstud" value="Save"></td>
-               </tr>
-               </form>
-               </table>
-           </td>
-       </tr>
-    </tr>
 
 </table>
 </div>
