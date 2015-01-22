@@ -13,7 +13,6 @@ if($_POST['btnSave']!='')
 }
 
 $sqlList			=	"SELECT SID, SNAME, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']." ORDER BY SNAME ASC";
-//SELECT a.SID, a.SNAME, b.SID, b.STATUS FROM SMASTER a, SATT b where a.SID = b.SID;
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
 ?>
@@ -79,7 +78,7 @@ function att(str, str1) {
 		<td align="left" valign="top">
 			<table width="580px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 					<tr>
-						<td align="right" valign="top">Status:<div id="attout">Status</div></td>
+						<td align="right" valign="top">Status:<div id="attout"></div></td>
 					</tr>
 				<tr>
 					<td height="20" align="right">&nbsp;</td>

@@ -8,9 +8,9 @@ if($_POST['btnSave']!='')
 	$contact = $_POST['txtcontact'];
 	$email = $_POST['txtemail'];
 	$class = $_POST['txtclass'];
-        echo $class;
+	$status = $_POST['txtstatus'];
 
-	$sql = "INSERT INTO EMASTER (EMPNAME, EMPPASS, EMPPHONE, EMPEMAIL, CID) VALUES ('".$name."','".$pass."','".$contact."','".$email."','".$class."')";
+	$sql = "INSERT INTO EMASTER (EMPNAME, EMPPASS, EMPPHONE, EMPEMAIL, CID, STATUS) VALUES ('".$name."','".$pass."','".$contact."','".$email."','".$class."','".$status."')";
 	mysql_query($sql);
 }
 
@@ -20,31 +20,6 @@ $totalList                      =       mysql_num_rows($resList);
 
 ?>
 <?php include "header.php";   	?>  
-
-<script>
-function classid(str) {
-    if (str == "") {
-        document.getElementById("CID").innerHTML = "";
-        return;
-    } else {
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("CID").innerHTML = xmlhttp.responseText;
-            }
-        }
-        xmlhttp.open("GET","classid.php?q="+str,true);
-        xmlhttp.send();
-    }
-}
-</script>
-
 
 <style>
 .rowHead
@@ -71,7 +46,7 @@ function classid(str) {
 <div id="content" align="center">
 <table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
 	<tr>
-		<td align="left" valign="top" height="20px" style="padding-left:10px;border-bottom:1px solid #999999;"><b>Welcome to seips intranet - you loged in as Admin</b></td>
+		<td align="left" valign="top" height="20px" style="padding-left:10px;border-bottom:1px solid #999999;">Welcome to seips intranet - you loged in as Admin</td>
 	</tr>
 	<tr><td height="10">&nbsp;Add Teachers details here</td></tr> 
 	<tr>
@@ -120,6 +95,11 @@ function classid(str) {
 							<?php  }; } ?>
                                                                 </select>
                                                                 </td>
+							</tr>
+							<tr>
+								<td width="200px" style="height:30px">
+								 Active<input type="radio" name="txtstatus" value="active" checked> Inactive<input type="radio" name="txtstatus" value="inactive">
+                                				</td>
                                                         </tr>
 							<tr>
 								<td></td>

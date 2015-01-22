@@ -6,9 +6,10 @@ if($_POST['btnSave']!='')
 	$studName = $_POST['txtname'];
 	$studContact = $_POST['txtcontact'];
 	$studEmail = $_POST['txtemail'];
+	$studstatus = $_POST['txtstatus'];
 	$teacherId  = $_POST['hiddenteacher'];
 	
-	$sql = "INSERT INTO SMASTER ( SNAME, SPHONE, SEMAIL,  SCID ) VALUES ('".$studName."','".$studContact."','".$studEmail."','".$teacherId."' )";
+	$sql = "INSERT INTO SMASTER ( SNAME, SPHONE, SEMAIL, SCID, STATUS ) VALUES ('".$studName."','".$studContact."','".$studEmail."','".$teacherId."','".$studstatus."' )";
 	mysql_query($sql);
 }
 
@@ -76,6 +77,11 @@ $totalList                      =       mysql_num_rows($resList);
                                                                         <input type="text" name="txtemail" id="txtemail" value="null" style="width:230px">
                                                                 </td>
 							</tr>
+                                                        <tr>
+                                                                <td width="200px" style="height:30px">
+                                                                 Active<input type="radio" name="txtstatus" value="active" checked> Inactive<input type="radio" name="txtstatus" value="inactive">
+                                                                </td>
+                                                        </tr>
 							<tr>
 								<td></td>
 								<td>
