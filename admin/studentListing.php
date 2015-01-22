@@ -34,59 +34,38 @@ $totalList			= 	mysql_num_rows($resList);
 }
 </style>
 
-
-
-<script language="javascript" type="text/javascript">
-<!-- 
-//Browser Support Code
-function ajaxFunction(){
- var ajaxRequest;  // The variable that makes Ajax possible!
-	
- try{
-   // Opera 8.0+, Firefox, Safari
-   ajaxRequest = new XMLHttpRequest();
- }catch (e){
-   // Internet Explorer Browsers
-   try{
-      ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-   }catch (e) {
-      try{
-         ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-      }catch (e){
-         // Something went wrong
-         alert("Your browser broke!");
-         return false;
-      }
-   }
- }
- // Create a function that will receive data 
- // sent from the server and will update
- // div section in the same page.
- ajaxRequest.onreadystatechange = function(){
-   if(ajaxRequest.readyState == 4){
-      var ajaxDisplay = document.getElementById('ajaxDiv');
-      ajaxDisplay.innerHTML = ajaxRequest.responseText;
-   }
- }
- // Now get the value from user and pass it to
- // server script.
- var studentid = document.getElementById('studentid').value;
- var status = document.getElementById('status').value;
-
- var queryString = "?studentid=" + studentid ;
- queryString +=  "&status=" + status;
- ajaxRequest.open("GET", "attstatus.php" + 
+<script>
+function att(str, str1) {
+    if (str == "") {
+        document.getElementById("attout").innerHTML = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("attout").innerHTML = xmlhttp.responseText;
+            }
+        }
+	var queryString = "?studentid=" + str ;
+	 queryString +=  "&status=" + str1;
+	xmlhttp.open ("GET", "attstatus.php" + 
                               queryString, true);
- ajaxRequest.send(null); 
+        xmlhttp.send();
+    }
 }
-//-->
 </script>
 
 
 <div id="menu">
 	<ul>
 		<li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add New Student</b></a></li>
-		<li><a href="#" class="active"><b>Student Listing</b></a></li>
+		<li><a href="#" class="active"><b>Student Attendance</b></a></li>
 		<li><a href="index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="clr"></div>
@@ -99,6 +78,9 @@ function ajaxFunction(){
 	<tr>
 		<td align="left" valign="top">
 			<table width="580px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+					<tr>
+						<td align="right" valign="top">Status:<div id="attout">Status</div></td>
+					</tr>
 				<tr>
 					<td height="20" align="right">&nbsp;</td>
 				</tr>
@@ -108,9 +90,7 @@ function ajaxFunction(){
 							<tr class="rowHead" style="border:1px solid #999999;">
 								<td height="5" width="50px" align="center">Sr.No</td>
 								<td height="5">&nbsp;Student Name</td>
-								<td height="5" align="center">Status</td>
 								<td height="5" align="center">Action</td>
-								<td height="5" align="center">Notifications</td>
 							</tr>
 							<?php 
 							if($totalList > 0)	
@@ -122,17 +102,12 @@ function ajaxFunction(){
 							<tr style="border:1px solid #999999;">
 								<td height="5" align="center"><?php echo $i++; ?>.</td>
 								<td height="5">&nbsp;<?php echo $rowList['SNAME']; ?></td>
-								<td height="5">&nbsp;<?php echo $rowList['STATUS']; ?></td>
 								<td height="5" width="230px" align="center" style="height:30px">
-								<form name='myForm'>
-								<input type="hidden" id="studentid" name="studentid" value='<?php echo $rowList['SID']; ?>'>
-								<select id='status'>
-								<option value="Present">Present</option>
-								<option value="Absent">Absent</option>
-								<input type='button' onclick='ajaxFunction()' value='Mark'/>
+								<select id="attstatus" onchange="att(this.value, this.options[this.selectedIndex].text)">
+								<option value="" selected>Mark Attendance</option>
+								<option value="<?php echo $rowList['SID']; ?>">Present</option>
+								<option value="<?php echo $rowList['SID']; ?>">Absent</option>
 								</select>
-								</form>
-								<td height="5" align="center"><div id='ajaxDiv'></div></td>
 								</td>
 							</tr>
 							<?php } 
@@ -145,13 +120,6 @@ function ajaxFunction(){
 							</tr>
 							<?php	} ?>
 						</table>
-					</td>
-				</tr>
-				<tr>
-					<td height="20" align="right">
-						<form name="frmReport" action="reporting.php" method="post">
-							<input type="hidden" name="txtCard" id="txtCard" value="">
-						</form>
 					</td>
 				</tr>
 			</table>

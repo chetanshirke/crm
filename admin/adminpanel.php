@@ -14,7 +14,7 @@ if($_POST['btnSave']!='')
 	mysql_query($sql);
 }
 
-$sqlList                        =       "SELECT CNAME from CMASTER";
+$sqlList                        =       "SELECT CNAME, CID from CMASTER";
 $resList                        =       mysql_query($sqlList) or die(mysql_error());
 $totalList                      =       mysql_num_rows($resList);
 
@@ -24,7 +24,7 @@ $totalList                      =       mysql_num_rows($resList);
 <script>
 function classid(str) {
     if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("CID").innerHTML = "";
         return;
     } else {
         if (window.XMLHttpRequest) {
@@ -36,7 +36,7 @@ function classid(str) {
         }
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                document.getElementById("CID").innerHTML = xmlhttp.responseText;
             }
         }
         xmlhttp.open("GET","classid.php?q="+str,true);
@@ -108,7 +108,7 @@ function classid(str) {
   							<tr>
                                                                 <td style="height:30px">ClassRoom:</td>
                                                                 <td height="5">
-								<select onchange="classid(this.value)">
+								<select name= "txtclass" id="txtclass" >
 							<?php
                                                         if($totalList > 0)
                                                         {
@@ -116,11 +116,9 @@ function classid(str) {
                                                                 while($rowList=mysql_fetch_assoc($resList))
                                                                 {
                                                         ?>
-
-                                                                <option value='<?php echo $rowList['CNAME']; ?>'><?php echo $rowList['CNAME']; ?></option>
+                                                                <option value=<?php echo $rowList['CID']; ?>><?php echo $rowList['CNAME']; ?></option>
 							<?php  }; } ?>
                                                                 </select>
-								<input type="text" id="txtHint" placeholder="select option"><br>
                                                                 </td>
                                                         </tr>
 							<tr>
