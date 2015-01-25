@@ -65,68 +65,65 @@ function att(str, str1) {
 	<ul>
 		<li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add New Student</b></a></li>
 		<li><a href="#" class="active"><b>Student Attendance</b></a></li>
+		<li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>"><b>Attendance Report</b></a></li>
 		<li><a href="index.php?logout"><b>Logout</b></a></li>
+		<li><a href="#"><div style="width:200px;background:#9aba4b" id="attout">Attendance Status</div></a></li>
 	</ul>
 <div class="clr"></div>
 </div>  
-<div id="content" align="center">
-<table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
-	<tr>
-		<td height="10">&nbsp;</td>
- 	</tr> 
-	<tr>
-		<td align="left" valign="top">
-			<table width="580px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+	<table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
+		<tr>
+			<td height="10">&nbsp;</td>
+ 		</tr> 
+		<tr>
+			<td align="left" valign="top">
+				<table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 					<tr>
-						<td align="right" valign="top">Status:<div id="attout"></div></td>
+						<td height="20" align="right">&nbsp;</td>
 					</tr>
-				<tr>
-					<td height="20" align="right">&nbsp;</td>
-				</tr>
-				<tr>
-					<td height="40" style="padding-left:10px;">
-						<table width="680px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-							<tr class="rowHead" style="border:1px solid #999999;">
-								<td height="5" width="50px" align="center">Sr.No</td>
-								<td height="5">&nbsp;Student Name</td>
-								<td height="5" align="center">Action</td>
-							</tr>
-							<?php 
-							if($totalList > 0)	
-							{	
-								$i=1;
-								while($rowList=mysql_fetch_assoc($resList))
-								{
-							?>
-							<tr style="border:1px solid #999999;">
-								<td height="5" align="center"><?php echo $i++; ?>.</td>
-								<td height="5">&nbsp;<?php echo $rowList['SNAME']; ?></td>
-								<td height="5" width="230px" align="center" style="height:30px">
-								<select id="attstatus" onchange="att(this.value, this.options[this.selectedIndex].text)">
-								<option value="" selected>Mark Attendance</option>
-								<option value="<?php echo $rowList['SID']; ?>">Present</option>
-								<option value="<?php echo $rowList['SID']; ?>">Absent</option>
-								</select>
-								</td>
-							</tr>
-							<?php } 
-							} 
-							else 
-							{ 
-							?>
-							<tr>
-								<td height="5" colspan="5" align="center">No Records Found.</td>
-							</tr>
-							<?php	} ?>
-						</table>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	
-</table>
-</div>
-<?php //include "footer.php";	?>
+					<tr>
+						<td height="40" style="padding-left:10px;">
+							<table width="958px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+								<tr class="rowHead" style="border:1px solid #999999;">
+									<td height="5" width="50px" align="center">Sr.No</td>
+									<td height="5">&nbsp;Student Name</td>
+									<td height="5" align="center">Action</td>
+								</tr>
+									<?php 
+									if($totalList > 0)	
+									{	
+									$i=1;
+									while($rowList=mysql_fetch_assoc($resList))
+									{
+									?>
+								<tr style="border:1px solid #999999;">
+									<td height="5" align="center"><?php echo $i++; ?>.</td>
+									<td height="5">&nbsp;<?php echo $rowList['SNAME']; ?></td>
+									<td height="5" width="230px" align="center" style="height:30px">
+									<select id="attstatus" onchange="att(this.value, this.options[this.selectedIndex].text)">
+									<option value="" selected>Mark Attendance</option>
+									<option value="<?php echo $rowList['SID']; ?>">Present</option>
+									<option value="<?php echo $rowList['SID']; ?>">Absent</option>
+									</select>
+									</td>
+								</tr>
+								<?php } 
+								} 
+								else 
+								{ 
+								?>
+								<tr>
+									<td height="5" colspan="5" align="center">No Records Found.</td>
+								</tr>
+								<?php	} ?>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+  		<tr><td height="10">&nbsp;</td></tr>	
+	</table>
+<div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>
 </body>
 </html>

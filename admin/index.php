@@ -10,6 +10,12 @@ if($_POST["txtUserName"]!='')
 }
 
 ?>
+
+<div class="outer">
+ <div id="mainarea">
+ <div id="mainarea">
+<div class="dot2"></div>
+<div id="main" align="center" style="padding-top:150px">
 <?php include "header.php";     ?>
 <style>
 .rowHead
@@ -37,12 +43,12 @@ if($_POST["txtUserName"]!='')
 					<table class="login-tab">
 						
 						<tbody><tr>
-							<td><font color="white"> Username :</font></td>
+							<td><font color="Gray"> Username :</font></td>
 							
 							<td><input type="text" id="txtUserName" class="inputusername" name="txtUserName"/></td>
 						</tr>
 						<tr>
-							<td> <font color="white"> Password :</font></td>
+							<td> <font color="Gray"> Password :</font></td>
 							<td><input type="password" id="txtPassword" class="inputpassword" name="txtPassword"/></td>
 						</tr>
 						<tr>
@@ -52,11 +58,13 @@ if($_POST["txtUserName"]!='')
 							<input type="submit" class="loginButton" value="Submit" id="btnLogin" name="btnLogin"/>
 							</td>
 						</tr>
+						<tr><td></td>
 					</tbody></table>
 					</form>
 				</td>
 			</tr>
 		</tbody></table>
+		<div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>
 		  
 	</div>
 </div>

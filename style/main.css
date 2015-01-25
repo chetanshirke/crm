@@ -19,7 +19,7 @@ body {
 	margin:auto;
 	width:980px;
 	border:0px red solid;
-	background:url(../images/bg.jpg) repeat-x top;
+/*	background:url(../images/bg.jpg) repeat-x top; */
 }
 a:active, a:focus {
 	outline:none;
@@ -30,18 +30,19 @@ a:active, a:focus {
 }
 .blue { color:#183883;}
 .text_bold { font-weight:bold;}
-/*HEADER*/
+/*HEADER
 #header {
 	text-align:left;
 	margin:auto;
 	float:left;
 	width:980px;
-/*	height:115px;*/
-	background:url(../images/header_bg.png) no-repeat top left;
-}
+	height:115px;
+	background:url(../images/header_bg.png) no-repeat top left; 
+}*/
 #logo {
 	margin:auto;
-	height:113px;
+	height:63px;
+	background:url(../images/logo.png) no-repeat top left; 
 }
 #contact {
 	float:right;
@@ -146,6 +147,7 @@ a:active, a:focus {
 	color:#1a1b1d;
 	background:#a4b6e3;
 }
+
 #header #social {
 	float:right;
 	margin:25px 0px 0px 0px;

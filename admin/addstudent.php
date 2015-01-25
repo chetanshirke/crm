@@ -40,6 +40,7 @@ $totalList                      =       mysql_num_rows($resList);
 	<ul>
 		<li><a href="#" class="active"><b>Add New Student</b></a></li>
 		<li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
+		<li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>"><b>Attendance Report</b></a></li>
 		<li><a href="index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="clr"></div>
@@ -58,7 +59,7 @@ $totalList                      =       mysql_num_rows($resList);
 				<tr>
 					<td height="40" style="padding-left:10px;">
 						<form name="frm" action="" method="post">
-						<table width="580px" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
+						<table width="958px" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
 							<tr>
 								<td width="170px" style="height:30px">Student Name:</td>
 								<td>
@@ -102,13 +103,13 @@ $totalList                      =       mysql_num_rows($resList);
 					<td height="20" align="right">&nbsp;</td>
 				</tr>
 			</table>
-		        <table width="580px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+		        <table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                 <tr>
-                                        <td height="20" align="left">&nbsp; Student List :</td>
+                                        <td height="20" align="left">&nbsp;Student List</td>
                                 </tr>
                                 <tr>
                                         <td height="40" style="padding-left:10px;">
-                                                <table width="680px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                                                <table width="958px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                                         <tr class="rowHead" style="border:1px solid #999999;">
                                                                 <td height="5" width="50px" align="center">Sr.No</td>
                                                                 <td height="5">&nbsp;Student Name</td>
@@ -138,9 +139,9 @@ $totalList                      =       mysql_num_rows($resList);
                                                 </table>
 		</td>
 	</tr>
-	
+<tr><td height="10">&nbsp;</td></tr>
 </table>
 </div>
-<?php //include "footer.php";	?>
+<div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>	
 </body>
 </html>
