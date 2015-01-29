@@ -1,16 +1,12 @@
 <?php
 
-//error_reporting(0);
+error_reporting(0);
 
 $dbHost = "localhost";  //database host name
 $dbName = "seips-intranet"; //database name
 $dbUser = "root"; //database name
-$dbPass = ""; //database access password for above user
+$dbPass = "redalert"; //database access password for above user
 
-$dbHost = "localhost";  //database host name
-$dbName = "seips-intranet"; //database name
-$dbUser = "root"; //database name
-$dbPass = ""; //database access password for above user
 
 
 $urlpath="http://".$_SERVER['HTTP_HOST']."";

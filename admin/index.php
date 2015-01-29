@@ -61,6 +61,7 @@ if($_POST["txtUserName"]!='')
 						<tr><td></td>
 					</tbody></table>
 					</form>
+					<table align="center"><tr><td><font color="red">&nbsp;<?php echo $_GET['err']; ?></font></td></tr></table>
 				</td>
 			</tr>
 		</tbody></table>

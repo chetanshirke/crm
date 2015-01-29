@@ -34,9 +34,9 @@ $totalList			= 	mysql_num_rows($resList);
 </style>
 
 <script>
-function att(str, str1) {
+function att(str, str1, str2) {
     if (str == "") {
-        document.getElementById("attout").innerHTML = "";
+        document.getElementById(str2).innerHTML = "";
         return;
     } else {
         if (window.XMLHttpRequest) {
@@ -48,7 +48,7 @@ function att(str, str1) {
         }
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("attout").innerHTML = xmlhttp.responseText;
+                document.getElementById(str2).innerHTML = xmlhttp.responseText;
             }
         }
 	var queryString = "?studentid=" + str ;
@@ -67,14 +67,10 @@ function att(str, str1) {
 		<li><a href="#" class="active"><b>Student Attendance</b></a></li>
 		<li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>"><b>Attendance Report</b></a></li>
 		<li><a href="index.php?logout"><b>Logout</b></a></li>
-		<li><a href="#"><div style="width:200px;background:#9aba4b" id="attout">Attendance Status</div></a></li>
 	</ul>
 <div class="clr"></div>
 </div>  
 	<table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
-		<tr>
-			<td height="10">&nbsp;</td>
- 		</tr> 
 		<tr>
 			<td align="left" valign="top">
 				<table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
@@ -88,6 +84,7 @@ function att(str, str1) {
 									<td height="5" width="50px" align="center">Sr.No</td>
 									<td height="5">&nbsp;Student Name</td>
 									<td height="5" align="center">Action</td>
+									<td height="5" align="center">Notifications</td>
 								</tr>
 									<?php 
 									if($totalList > 0)	
@@ -100,12 +97,13 @@ function att(str, str1) {
 									<td height="5" align="center"><?php echo $i++; ?>.</td>
 									<td height="5">&nbsp;<?php echo $rowList['SNAME']; ?></td>
 									<td height="5" width="230px" align="center" style="height:30px">
-									<select id="attstatus" onchange="att(this.value, this.options[this.selectedIndex].text)">
+									<select id="attstatus" onchange="att(this.value, this.options[this.selectedIndex].text, <?php echo $i ?>)">
 									<option value="" selected>Mark Attendance</option>
 									<option value="<?php echo $rowList['SID']; ?>">Present</option>
 									<option value="<?php echo $rowList['SID']; ?>">Absent</option>
 									</select>
 									</td>
+									<td height="5" align="center"><div style="width:140px;background:#9aba4b;" id="<?php echo $i ?>"></div></td>
 								</tr>
 								<?php } 
 								} 

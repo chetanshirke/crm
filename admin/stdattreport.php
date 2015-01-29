@@ -61,25 +61,16 @@ $(document).ready(
 </div>
 <table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
         <tr>
-                <td height="10">&nbsp;</td>
-        </tr>
-        <tr>
                 <td align="left" valign="top">
-                        <table width="968px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-                                <tr>
-                                        <td height="20" align="right">&nbsp;</td>
-                                </tr>
+                        <table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                                        <tr>
+                                                <td height="20" align="right">&nbsp;</td>
+                                        </tr>
                                 <tr>
                                         <td height="40" style="padding-left:10px;">
-                                                <table width="968px" align="center" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-                                                        <?php
-                                                        if($totalList > 0)
-                                                        {
-                                                                while($rowList=mysql_fetch_assoc($resList))
-                                                                {
-                                                        ?>
+                                                <table width="958px" align="center" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                                         <tr class="rowHead" style="border:1px solid #999999;">
-								<form action="stdattsql.php?tid=<?php echo $_GET['tid']?>&sname=<?php echo $rowList['SNAME']; ?>" method="post">
+								<form action="stdattsql.php?tid=<?php echo $_GET['tid']?>" method="post">
                                                                 <td height="5">&nbsp;Select start date</td>
                                                                 <td height="5">&nbsp;Select end date</td>
                                                                 <td height="5">&nbsp;Select Student</td>
@@ -92,7 +83,23 @@ $(document).ready(
 								<td align="center" height="5">
                                                                 <select name="txtsid" id="txtsid" >
                                                                 <option value="" selected>Select Student</option>
+                                                        		<?php
+                                                        		if($totalList > 0)
+                                                        		{
+                                                                	while($rowList=mysql_fetch_assoc($resList))
+                                                                	{
+                                                        		?>
                                                                 <option value=<?php echo $rowList['SID']; ?>><?php echo $rowList['SNAME']; ?></option>
+                                                        		<?php }
+                                                        		}
+                                                        		else
+                                                        		{
+                                                        		?>
+                                                        <tr>
+                                                                <td height="5" colspan="5" align="center">No Records Found.</td>
+                                                        </tr>
+                                                        <?php   } ?>
+								</td>
                                                                 </select>
                                                                 </td>
 								<td align="center" height="5">
@@ -100,20 +107,9 @@ $(document).ready(
                                                                 <option value="Present" selected>Present</option>
                                                                 <option value="Absent">Absent</option>
                                                                 </select>
-								</td>
 								<td align="center" height="5"><input type="submit" name="btnView" id="btnView" value="Submit" style="cursor:pointer"></td>
-								<input type="hidden" name="tid" id="tid"  value=<?php echo $_GET['tid']?>>
 								</form>
                                                         </tr>
-                                                        <?php }
-                                                        }
-                                                        else
-                                                        {
-                                                        ?>
-                                                        <tr>
-                                                                <td height="5" colspan="5" align="center">No Records Found.</td>
-                                                        </tr>
-                                                        <?php   } ?>
                                                 </table>
                                         </td>
                                 </tr>

@@ -18,6 +18,9 @@ $sqlList                        =       "SELECT CNAME, CID from CMASTER";
 $resList                        =       mysql_query($sqlList) or die(mysql_error());
 $totalList                      =       mysql_num_rows($resList);
 
+$sql   	                        =       "SELECT * from EMASTER ORDER BY EMPID ASC";
+$result                         =       mysql_query($sql) or die(mysql_error());
+$total	                        =       mysql_num_rows($result);
 ?>
 <?php include "header.php";   	?>  
 
@@ -110,8 +113,39 @@ $totalList                      =       mysql_num_rows($resList);
 							</tr>
 						</table>
 						</form>
+                                                <td height="40" style="padding-left:10px;">
+
 					</td>
 				</tr>
+                                                        <table width="958px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                                                                <tr class="rowHead" style="border:1px solid #999999;">
+                                                                        <td height="5" align="center">Employe ID</td>
+                                                                        <td height="5">&nbsp;Employe Name</td>
+                                                                        <td height="5" align="center"> Employe Class ID</td>
+                                                                        <td height="5" align="center">Notifications</td>
+                                                                </tr>
+                                                                        <?php
+                                                                        if($total > 0)
+                                                                        {
+                                                                        while($rowList=mysql_fetch_assoc($result))
+                                                                        {
+                                                                        ?>
+                                                                <tr style="border:1px solid #999999;">
+                                                                        <td height="5">&nbsp;<?php echo $rowList['EMPID']; ?></td>
+                                                                        <td height="5">&nbsp;<?php echo $rowList['EMPNAME']; ?></td>
+                                                                        <td height="5">&nbsp;<?php echo $rowList['CID']; ?></td>
+									<td><input type="button" name="btnDel" id="btnDel" value="Delete" style="cursor:pointer" onclick="javascript:location.href='deleteUser.php?EMPID=<?php echo $rowList['EMPID']; ?>'"></td>
+                                                                </tr>
+                                                                <?php }
+                                                                }
+                                                                else
+                                                                {
+                                                                ?>
+                                                                <tr>
+                                                                        <td height="5" colspan="5" align="center">No Records Found.</td>
+                                                                </tr>
+                                                                <?php   } ?>
+                                                        </table>
 				<tr>
 					<td height="20" align="right">&nbsp;</td>
 				</tr>

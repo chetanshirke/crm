@@ -5,13 +5,14 @@ include_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
         $edate = $_POST['txtedate'];
         $sid = $_POST['txtsid'];
         $status = $_POST['txtstatus'];
-        $sname = $_POST['sname'];
 
 
-        $sql                         	=       "SELECT DTIME, STATUS FROM SATT WHERE DTIME BETWEEN '".$sdate."' and '".$edate."' and SID='".$sid."' and STATUS='".$status."'";
+        $sql                         	=       "SELECT DTIME, STATUS FROM SATT WHERE DTIME BETWEEN '".$sdate."' and '".$edate."' and SID='".$sid."' and STATUS='".$status."' ORDER BY DTIME DESC";
         $resList                        =       mysql_query($sql) or die(mysql_error());
         $totalList                      =       mysql_num_rows($resList);
 
+	$sqlsid				=	"SELECT SNAME FROM SMASTER WHERE SID='".$sid."'";
+	$result                         =        mysql_query($sqlsid) or die(mysql_error());
 ?>
 
 <?php include "header.php"; ?>
@@ -48,13 +49,21 @@ function myFunction() {
 </div>
 <table width="980px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                                         <tr class="rowHead" style="border:1px solid #999999;background-color:white;">
-								<td>&nbsp;Student Name : &nbsp;<?php echo $_GET['sname']?></td>
-								<td>&nbsp;From Date : &nbsp;<?php echo $sdate?> &nbsp; To Date : <?php echo $edate?></td>
+
+                                                        <?php
+                                                        {
+								while($List=mysql_fetch_assoc($result))
+                                                                {
+                                                        ?>
+								<td>&nbsp;Student Name : &nbsp;<?php echo $List['SNAME'];?></td>
+							<?php } ?>
+							<?php } ?>
+								<td width=300>&nbsp;From Date : &nbsp;<?php echo $sdate?> &nbsp; To Date : <?php echo $edate?></td>
 								<td>&nbsp;Total <?php echo $status?> Days : &nbsp;<?php echo $totalList ?></td>
                                                         </tr>
                                                         <tr class="rowHead" style="border:1px solid #999999;">
-                                                                <td height="5">&nbsp;Sr No</td>
-                                                                <td height="5">&nbsp;Date</td>
+                                                                <td height="5" align="center">&nbsp;Date</td>
+                                                                <td height="5" align="center">&nbsp;Day</td>
                                                                 <td height="5" align="center">Status</td>
                                                         </tr>
 
@@ -66,9 +75,14 @@ function myFunction() {
                                                                 {
                                                         ?>
                                                         <tr style="border:1px solid #999999;">
-							<td height="5" align="center"><?php echo $i++; ?>.</td>
-                                                                <td height="5">&nbsp;<?php echo $rowList['DTIME']; ?></td>
-                                                                <td height="5">&nbsp;<?php echo $rowList['STATUS']; ?></td>
+                                                                <td height="5" align="center">&nbsp;<?php echo $rowList['DTIME']; ?></td>
+                                                                <td height="5" align="center">&nbsp;<?php $date = $rowList['DTIME'];
+								$sepparator = '-';
+								$parts = explode($sepparator, $date);
+								$dayForDate = date("l", mktime(0, 0, 0, $parts[1], $parts[2], $parts[0]));
+								echo $dayForDate;
+ 								?></td>
+                                                                <td height="5" align="center">&nbsp;<?php echo $rowList['STATUS']; ?></td>
                                                         </tr>
                                                         <?php }
                                                         }

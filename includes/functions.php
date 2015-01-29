@@ -19,8 +19,8 @@ function accountLogin($username, $password)
 	}
 	else
 	{
-		$errMsg	= "Please enter correct Login and Password.<br> Both Login and Password are case sensitive !!!";
-		header("admin/index.php?err");
+		$errMsg	= "Login Failed. Please enter correct Login and Password.";
+                header("Location:index.php?err=".$errMsg);
 		exit;
 	}
 	

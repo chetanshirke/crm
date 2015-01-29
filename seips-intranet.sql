@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2015 at 04:56 AM
+-- Generation Time: Jan 26, 2015 at 04:43 AM
 -- Server version: 5.1.73
 -- PHP Version: 5.3.3
 
@@ -157,14 +157,17 @@ CREATE TABLE IF NOT EXISTS `SATT` (
   `STATUS` varchar(10) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `SID` (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `SATT`
 --
 
 INSERT INTO `SATT` (`ID`, `SID`, `DTIME`, `HOLIDAY`, `STATUS`) VALUES
-(35, 13, '2015-01-23', 0, 'Absent');
+(37, 13, '2015-01-24', 0, 'Absent'),
+(36, 13, '2015-01-26', 0, 'Present'),
+(35, 13, '2015-01-23', 0, 'Absent'),
+(40, 13, '2015-01-25', 0, 'Present');
 
 -- --------------------------------------------------------
 
