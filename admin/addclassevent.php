@@ -8,10 +8,11 @@ if($_POST['btnSave']!='')
 	$start = $_POST['txtsdate'];
 	$end = $_POST['txtedate'];
 	$details = $_POST['txtdetails'];
+	$type = $_POST['txttype'];
 	$status = $_POST['txtstatus'];
         
         $details = mysql_real_escape_string($details);	
-	$sql = "INSERT INTO CEVENT ( EMPID, CEVNAME, SDATE, EDATE, CEVDETAILS, STATUS ) VALUES ( '".$teacherId."', '".$name."','".$start."','".$end."','".$details."', '".$status."' )";
+	$sql = "INSERT INTO CEVENT ( EMPID, CEVNAME, SDATE, EDATE, CEVDETAILS, TYPE, STATUS ) VALUES ( '".$teacherId."', '".$name."','".$start."','".$end."','".$details."', '".$type."', '".$status."' )";
 	mysql_query($sql);
 }
 
@@ -106,12 +107,18 @@ $(document).ready(
 								<td><textarea rows="4" cols="50" name="txtdetails" id="txtdetails"></textarea></td>
                                                         </tr>
                                                         <tr>
-                                                                <td width="200px" style="height:30px">
+								<td width="170px" style="height:30px">Event Status:</td>
+                                                                <td style="height:30px">
                                                                  Active<input type="radio" name="txtstatus" value="active" checked> Inactive<input type="radio" name="txtstatus" value="inactive">
                                                                 </td>
                                                         </tr>
                                                         <tr>
-                                                                <td></td>
+								<td width="170px" style="height:30px">Event Type:</td>
+                                                                <td width="200px" style="height:30px">
+                                                                 Class Room<input type="radio" name="txttype" value="" checked> School<input type="radio" name="txttype" value="school">
+                                                                </td>
+                                                        </tr>
+                                                        <tr>
                                                                 <td>
                                                                         <input type="hidden" name="hiddenteacher" id="hiddenteacher" value="<?php echo $_GET['tid']?>" style="width:230px">
                                                                 </td>

@@ -12,7 +12,7 @@ if($_POST['btnSave']!='')
 	mysql_query($sql);
 }
 
-$sqlList			=	"SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=".$_GET['tid']." and b.EMPID=".$_GET['tid']." and b.CID=c.CID and a.STATUS='Active'";
+$sqlList			=	"SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=".$_GET['tid']." and b.EMPID=".$_GET['tid']." and b.CID=c.CID and a.STATUS='Active'";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
 ?>
@@ -107,10 +107,10 @@ function att(str, str1, str2) {
                                                 				<td height="20" align="right">&nbsp;</td>
                                         				</tr>
 									<tr>
-										<td colspan="3" align="left"><font color="gray" size="1"><i>Class Room:&nbsp;<?php echo $rowList['CNAME']; ?></i></font></td>
+										<td colspan="3" align="left"><font color="gray" size="1"><i>This event is for <?php if(!$rowList['TYPE']){ echo $rowList['CNAME'];}else{ echo $rowList['TYPE'];} ?></i></font></td>
 									</tr>
 									<tr>
-										<td colspan="3" align="right"><font color="gray" size="1"><i>Add by:&nbsp;<?php echo $rowList['EMPNAME']; ?></i></font></td>
+										<td colspan="3" align="right"><font color="gray" size="1"><i>Event added by <?php echo $rowList['EMPNAME']; ?></i></font></td>
 									</tr>
 								<div style="background:#9aba4b;font-size: 0.5px;">&nbsp;</div>
 							</table>

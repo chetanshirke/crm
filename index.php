@@ -9,7 +9,7 @@ if($_POST["txtUserName"]!='')
         accountLogin($username, $password);
 }
 
-$sqlList                        =       "SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=b.EMPID and b.CID=c.CID and a.STATUS='Active' ORDER BY a.SDATE ASC";
+$sqlList                        =       "SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=b.EMPID and b.CID=c.CID and a.STATUS='Active' ORDER BY a.SDATE ASC";
 $resList                        =       mysql_query($sqlList) or die(mysql_error());
 $totalList                      =       mysql_num_rows($resList);
 
@@ -110,10 +110,10 @@ $totalList                      =       mysql_num_rows($resList);
                                                                                 <td height="10" align="right">&nbsp;</td>
                                                                         </tr>
                                                                         <tr>
-                                                                                <td colspan="3" align="left"><font color="gray" size="1"><i>Class Room:&nbsp;<?php echo $rowList['CNAME']; ?></i></font></td>
+                                                                                <td colspan="3" align="left"><font color="gray" size="2"><i>This event is for <?php if(!$rowList['TYPE']){ echo $rowList['CNAME'];}else{ echo $rowList['TYPE'];} ?></i></font></td>
                                                                         </tr>
                                                                         <tr>
-                                                                                <td colspan="3" align="right"><font color="gray" size="1"><i>Add by:&nbsp;<?php echo $rowList['EMPNAME']; ?></i></font></td>
+                                                                                <td colspan="3" align="right"><font color="gray" size="2"><i>Event added by <?php echo $rowList['EMPNAME']; ?></i></font></td>
                                                                         </tr>
                                                                 <div style="background:#9aba4b;font-size: 0.5px;">&nbsp;</div>
                                                         </table>
