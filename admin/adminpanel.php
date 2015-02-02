@@ -42,7 +42,7 @@ $total	                        =       mysql_num_rows($result);
 <div id="menu">
 	<ul>
 		<li><a href="/admin/teacherListing.php" class="active"><b>Teachers Details</b></a></li>
-		<li><a href="index.php?logout"><b>Logout</b></a></li>
+		<li><a href="/index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="outer">
 <div class="clr"></div>

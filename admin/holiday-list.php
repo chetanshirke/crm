@@ -41,7 +41,7 @@ $(function() {
         <ul>
                 <li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add New Student</b></a></li>
                 <li><a href="#" class="active"><b>Student Attendance</b></a></li>
-                <li><a href="index.php?logout"><b>Logout</b></a></li>
+                <li><a href="/index.php?logout"><b>Logout</b></a></li>
         </ul>
 <div class="clr"></div>
 </div>

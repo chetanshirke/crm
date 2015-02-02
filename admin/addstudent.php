@@ -38,10 +38,12 @@ $totalList                      =       mysql_num_rows($resList);
 
 <div id="menu">
 	<ul>
-		<li><a href="#" class="active"><b>Add New Student</b></a></li>
+		<li><a href="#" class="active"><b>Add Student</b></a></li>
+                <li><a href="addclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Add Event</b></a></li>
+                <li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Show Events</b></a></li>
 		<li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
 		<li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>"><b>Attendance Report</b></a></li>
-		<li><a href="index.php?logout"><b>Logout</b></a></li>
+		<li><a href="/index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="clr"></div>
 </div>  

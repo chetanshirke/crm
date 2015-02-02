@@ -66,7 +66,6 @@ if($_POST["txtUserName"]!='')
 			</tr>
 		</tbody></table>
 		<div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>
-		  
 	</div>
 </div>
 </body>

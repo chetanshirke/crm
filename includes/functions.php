@@ -12,9 +12,9 @@ function accountLogin($username, $password)
 		$accountuserid		= $rsLogin['EMPID'];
 		$accountusername	= $rsLogin['EMPNAME'];
 		if($rsLogin['is_admin']==1)
-		header("Location:adminpanel.php");
+		header("Location:admin/adminpanel.php");
 		else
-		header("Location:studentListing.php?tid=".$accountuserid);
+		header("Location:admin/showclassevent.php?tid=".$accountuserid);
 		exit;
 	}
 	else
@@ -24,12 +24,6 @@ function accountLogin($username, $password)
 		exit;
 	}
 	
-}
-
-
-function loginid($user)
-{
-	header("Location:addstudent.php?tid=".$user);
 }
 
 ?>

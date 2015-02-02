@@ -12,7 +12,7 @@ if($_POST['btnSave']!='')
 	mysql_query($sql);
 }
 
-$sqlList			=	"SELECT SID, SNAME, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']." ORDER BY SNAME ASC";
+$sqlList			=	"SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=".$_GET['tid']." and b.EMPID=".$_GET['tid']." and b.CID=c.CID and a.STATUS='Active'";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
 ?>
@@ -64,15 +64,15 @@ function att(str, str1, str2) {
 <div id="menu">
 	<ul>
 		<li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add Student</b></a></li>
-                <li><a href="addclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Add Event</b></a></li>
-		<li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Show Events</b></a></li>
-		<li><a href="#" class="active"><b>Student Attendance</b></a></li>
+		<li><a href="addclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Add Event</b></a></li>
+		<li><a href="#" class="active"><b>Class Events</b></a></li>
+		<li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
 		<li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>"><b>Attendance Report</b></a></li>
 		<li><a href="/index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="clr"></div>
 </div>  
-	<table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
+	<table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #999999;font-family:Courier;">
 		<tr>
 			<td align="left" valign="top">
 				<table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
@@ -81,13 +81,6 @@ function att(str, str1, str2) {
 					</tr>
 					<tr>
 						<td height="40" style="padding-left:10px;">
-							<table width="958px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-								<tr class="rowHead" style="border:1px solid #999999;">
-									<td height="5" width="50px" align="center">Sr.No</td>
-									<td height="5">&nbsp;Student Name</td>
-									<td height="5" align="center">Action</td>
-									<td height="5" align="center">Notifications</td>
-								</tr>
 									<?php 
 									if($totalList > 0)	
 									{	
@@ -95,18 +88,32 @@ function att(str, str1, str2) {
 									while($rowList=mysql_fetch_assoc($resList))
 									{
 									?>
-								<tr style="border:1px solid #999999;">
-									<td height="5" align="center"><?php echo $i++; ?>.</td>
-									<td height="5">&nbsp;<?php echo $rowList['SNAME']; ?></td>
-									<td height="5" width="230px" align="center" style="height:30px">
-									<select id="attstatus" onchange="att(this.value, this.options[this.selectedIndex].text, <?php echo $i ?>)">
-									<option value="" selected>Mark Attendance</option>
-									<option value="<?php echo $rowList['SID']; ?>">Present</option>
-									<option value="<?php echo $rowList['SID']; ?>">Absent</option>
-									</select>
-									</td>
-									<td height="5" align="center"><div style="width:140px;background:#9aba4b;" id="<?php echo $i ?>"></div></td>
-								</tr>
+							<table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+								<tr><td>&nbsp;</td></tr>
+									<tr>
+										<td align="left" width="600"><font color="red"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
+										<td align="right"><font color="gray" size="1">Start Date: <?php echo $rowList['SDATE']; ?></font></td>
+								        	<td align="right"><font color="gray" size="1">End Date: <?php echo $rowList['EDATE']; ?></font></td>
+									</tr>
+								<tr><td>&nbsp;</td></tr>
+									<tr>
+										<td colspan="3"><font color="gray" size="1"><i>Event Details </i></font><br></td>
+									</tr>
+								<tr><td>&nbsp;</td></tr>
+									<tr>
+										<td><?php echo $rowList['CEVDETAILS']; ?></td>
+									</tr>
+                                        				<tr>
+                                                				<td height="20" align="right">&nbsp;</td>
+                                        				</tr>
+									<tr>
+										<td colspan="3" align="left"><font color="gray" size="1"><i>Class Room:&nbsp;<?php echo $rowList['CNAME']; ?></i></font></td>
+									</tr>
+									<tr>
+										<td colspan="3" align="right"><font color="gray" size="1"><i>Add by:&nbsp;<?php echo $rowList['EMPNAME']; ?></i></font></td>
+									</tr>
+								<div style="background:#9aba4b;font-size: 0.5px;">&nbsp;</div>
+							</table>
 								<?php } 
 								} 
 								else 
@@ -116,13 +123,11 @@ function att(str, str1, str2) {
 									<td height="5" colspan="5" align="center">No Records Found.</td>
 								</tr>
 								<?php	} ?>
-							</table>
 						</td>
 					</tr>
 				</table>
 			</td>
 		</tr>
-  		<tr><td height="10">&nbsp;</td></tr>	
 	</table>
 <div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>
 </body>

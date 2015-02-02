@@ -52,10 +52,12 @@ $(document).ready(
 
 <div id="menu">
         <ul>
-                <li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add New Student</b></a></li>
+                <li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add Student</b></a></li>
+                <li><a href="addclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Add Event</b></a></li>
+                <li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Show Events</b></a></li>
                 <li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
                 <li><a href="#" class="active"><b>Attendance Report</b></a></li>
-                <li><a href="index.php?logout"><b>Logout</b></a></li>
+                <li><a href="/index.php?logout"><b>Logout</b></a></li>
         </ul>
 <div class="clr"></div>
 </div>
