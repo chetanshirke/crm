@@ -12,7 +12,8 @@ include_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
         $totalList                      =       mysql_num_rows($resList);
 
 	$sqlsid				=	"SELECT SNAME FROM SMASTER WHERE SID='".$sid."'";
-	$result                         =        mysql_query($sqlsid) or die(mysql_error());
+	$result                         =       mysql_query($sqlsid) or die(mysql_error());
+	$total			 	= 	mysql_num_rows($result);
 ?>
 
 <?php include "header.php"; ?>
@@ -38,28 +39,36 @@ function myFunction() {
         background-color:#6699CC;
 }
 </style>
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 <div id="menu">
         <ul>
                 <li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add Student</b></a></li>
                 <li><a href="addclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Add Event</b></a></li>
-                <li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Show Events</b></a></li>
+                <li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Events</b></a></li>
 		<li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
                 <li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>" class="active"><b>Attendance Report</b></a></li>
                 <li><a href="/index.php?logout"><b>Logout</b></a></li>
         </ul>
 <div class="clr"></div>
 </div>
-<table width="980px" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-                                                        <tr class="rowHead" style="border:1px solid #999999;background-color:white;">
+<div style="font-size: 10px;">&nbsp;</div>
+	<table width="99%" border="1" align="center" cellpadding="0" cellspacing="0" style="border:0px solid #999999;font-family:Courier;" >
+		<tr class="rowHead" style="border:1px solid #999999;">
 
                                                         <?php
+                                                        if($total > 0)
                                                         {
 								while($List=mysql_fetch_assoc($result))
                                                                 {
                                                         ?>
-								<td>&nbsp;Student Name : &nbsp;<?php echo $List['SNAME'];?></td>
-							<?php } ?>
-							<?php } ?>
+								<td>&nbsp;Student Name : &nbsp;<?php echo $List['SNAME']; ?></td>
+                                                        <?php }
+                                                        }
+                                                        else
+                                                        {
+                                                        ?>
+                                                                <td>No Records Found.</td>
+                                                        <?php   } ?>
 								<td width=300>&nbsp;From Date : &nbsp;<?php echo $sdate?> &nbsp; To Date : <?php echo $edate?></td>
 								<td>&nbsp;Total <?php echo $status?> Days : &nbsp;<?php echo $totalList ?></td>
                                                         </tr>
@@ -96,7 +105,9 @@ function myFunction() {
                                                         </tr>
                                                         <?php   } ?>
 </table>
-<div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>
-<button onclick="myFunction()">Print Attendance Report</button>
+<div style="font-size: 10px;">&nbsp;</div>
+<div align="center"><button onclick="myFunction()"><font size="2">Print Attendance Report</font></button></div>
+<div style="font-size: 10px;">&nbsp;</div>
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 </body>
 </html>

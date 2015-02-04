@@ -33,11 +33,12 @@ $totalList                      =       mysql_num_rows($resList);
 
 <div id="content" align="center">
 <div class="clr"></div>
+<div style="background:#9aba4b;font-size: 10px;">&nbsp;</div>
 </div>
-        <table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #999999;font-family:Courier;">
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #999999;font-family:Courier;">
 
 
-        <table class="login" width="980">
+        <table class="login" width="100%">
                 <tr>
                         <td style="height: 10px;"/>
                 </tr>
@@ -72,13 +73,9 @@ $totalList                      =       mysql_num_rows($resList);
              <table align="center"><tr><td><font color="red">&nbsp;<?php echo $_GET['err']; ?></font></td></tr></table>
 	</table>
 
-
-
-
-
                 <tr>
 		<td align="left" valign="top">
-                                <table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                                <table width="99%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                         <tr>
                                                 <td height="20" align="right">&nbsp;</td>
                                         </tr>
@@ -91,12 +88,11 @@ $totalList                      =       mysql_num_rows($resList);
                                                                         while($rowList=mysql_fetch_assoc($resList))
                                                                         {
                                                                         ?>
-                                                        <table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                                                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                                                 <tr><td>&nbsp;</td></tr>
                                                                         <tr>
-                                                                                <td align="left" width="600"><font color="red"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
-                                                                                <td align="right"><font color="gray" size="1">Start Date: <?php echo $rowList['SDATE']; ?></font></td>
-                                                                                <td align="right"><font color="gray" size="1">End Date: <?php echo $rowList['EDATE']; ?></font></td>
+                                                                                <td align="left" width="600"><font color="#e79527" size="5" font-family="tahoma"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
+                                                                                <td align="right"><font color="gray" size="1">Start Date <?php echo $rowList['SDATE']; ?>&nbsp;&nbsp; End Date <?php echo $rowList['EDATE']; ?></font></td>
                                                                         </tr>
                                                                 <tr><td height="2">&nbsp;</td></tr>
                                                                         <tr>
@@ -130,8 +126,8 @@ $totalList                      =       mysql_num_rows($resList);
                                         </tr>
                                 </table>
 	</table>
-<tr><td><div style="width:980;background:#9aba4b;font-size: 10px;color:#9aba4b">_</div></td></tr>
 </table>
+<div style="background:#9aba4b;font-size: 10px;">&nbsp;</div>
 </div>
 </body>
 </html>

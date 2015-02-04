@@ -15,6 +15,10 @@ if($_POST['btnSave']!='')
 $sqlList			=	"SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=".$_GET['tid']." and b.EMPID=".$_GET['tid']." and b.CID=c.CID and a.STATUS='Active'";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
+
+$sql	                        =       "SELECT SID, SNAME, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']." ORDER BY SNAME ASC";
+$result                         =       mysql_query($sql) or die(mysql_error());
+$total	                        =       mysql_num_rows($ressult);
 ?>
 <?php include "header.php"; ?>  
 <style>
@@ -59,23 +63,22 @@ function att(str, str1, str2) {
     }
 }
 </script>
-
-
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 <div id="menu">
 	<ul>
 		<li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add Student</b></a></li>
 		<li><a href="addclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Add Event</b></a></li>
-		<li><a href="#" class="active"><b>Class Events</b></a></li>
+		<li><a href="#" class="active"><b>Events</b></a></li>
 		<li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
 		<li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>"><b>Attendance Report</b></a></li>
 		<li><a href="/index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="clr"></div>
 </div>  
-	<table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #999999;font-family:Courier;">
+	<table width="100%" border="0" height="100%" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #999999;font-family:Courier;">
 		<tr>
 			<td align="left" valign="top">
-				<table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+				<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 					<tr>
 						<td height="20" align="right">&nbsp;</td>
 					</tr>
@@ -88,7 +91,7 @@ function att(str, str1, str2) {
 									while($rowList=mysql_fetch_assoc($resList))
 									{
 									?>
-							<table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 								<tr><td>&nbsp;</td></tr>
 									<tr>
 										<td align="left" width="600"><font color="red"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
@@ -129,6 +132,6 @@ function att(str, str1, str2) {
 			</td>
 		</tr>
 	</table>
-<div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 </body>
 </html>

@@ -49,28 +49,28 @@ $(document).ready(
         background-color:#6699CC;
 }
 </style>
-
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 <div id="menu">
         <ul>
                 <li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add Student</b></a></li>
                 <li><a href="addclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Add Event</b></a></li>
-                <li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Show Events</b></a></li>
+                <li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Events</b></a></li>
                 <li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
                 <li><a href="#" class="active"><b>Attendance Report</b></a></li>
                 <li><a href="/index.php?logout"><b>Logout</b></a></li>
         </ul>
 <div class="clr"></div>
 </div>
-<table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
         <tr>
                 <td align="left" valign="top">
-                        <table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                         <tr>
                                                 <td height="20" align="right">&nbsp;</td>
                                         </tr>
                                 <tr>
                                         <td height="40" style="padding-left:10px;">
-                                                <table width="958px" align="center" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                                                <table width="99%" align="center" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                                         <tr class="rowHead" style="border:1px solid #999999;">
 								<form action="stdattsql.php?tid=<?php echo $_GET['tid']?>" method="post">
                                                                 <td height="5">&nbsp;Select start date</td>
@@ -97,9 +97,6 @@ $(document).ready(
                                                         		else
                                                         		{
                                                         		?>
-                                                        <tr>
-                                                                <td height="5" colspan="5" align="center">No Records Found.</td>
-                                                        </tr>
                                                         <?php   } ?>
 								</td>
                                                                 </select>
@@ -120,7 +117,7 @@ $(document).ready(
         </tr>
                 <tr><td height="10">&nbsp;</td></tr>
         </table>
-<div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 </body>
 </html>
 

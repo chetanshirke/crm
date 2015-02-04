@@ -16,6 +16,10 @@ if($_POST['btnSave']!='')
 	mysql_query($sql);
 }
 
+$sqlList                        =       "SELECT CID, CNAME FROM CMASTER ORDER BY CNAME ASC";
+$resList                        =       mysql_query($sqlList) or die(mysql_error());
+$totalList                      =       mysql_num_rows($resList);
+
 ?>
 <?php include "header.php"; ?>  
 
@@ -62,30 +66,29 @@ $(document).ready(
 </style>
 
 </script>
-
-
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 <div id="menu">
 	<ul>
 		<li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add Student</b></a></li>
 		<li><a href="#" class="active"><b>Add Event</b></a></li>
-		<li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Show Events</b></a></li>
+		<li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Events</b></a></li>
 		<li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
 		<li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>"><b>Attendance Report</b></a></li>
 		<li><a href="/index.php?logout"><b>Logout</b></a></li>
 	</ul>
 <div class="clr"></div>
 </div>  
-	<table width="980px" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
 		<tr>
 			<td align="left" valign="top">
-				<table width="958px" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 					<tr>
 						<td height="20" align="right">&nbsp;</td>
 					</tr>
 					<tr>
 						<td height="40" style="padding-left:10px;">
                                                 <form name="frm" action="" method="post">
-                                                <table width="958px" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
+                                                <table width="99%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
                                                         <tr>
                                                                 <td width="170px" style="height:30px">Event Name:</td>
                                                                 <td>
@@ -113,9 +116,23 @@ $(document).ready(
                                                                 </td>
                                                         </tr>
                                                         <tr>
-								<td width="170px" style="height:30px">Event Type:</td>
+								<td width="170px" style="height:30px">Event For:</td>
                                                                 <td width="200px" style="height:30px">
-                                                                 Class Room<input type="radio" name="txttype" value="" checked> School<input type="radio" name="txttype" value="school">
+                                                                <select name="txttype" id="txttype" >
+                                                                <option value="" selected>school</option>
+                                                                        <?php
+                                                                        if($totalList > 0)
+                                                                        {
+                                                                        while($rowList=mysql_fetch_assoc($resList))
+                                                                        {
+                                                                        ?>
+                                                                <option value=<?php echo $rowList['CNAME']; ?>><?php echo $rowList['CNAME']; ?></option>
+                                                                        <?php }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                        ?>
+                                                        <?php   } ?>
                                                                 </td>
                                                         </tr>
                                                         <tr>
@@ -138,6 +155,6 @@ $(document).ready(
 		</tr>
   		<tr><td height="10">&nbsp;</td></tr>	
 	</table>
-<div style="background:#9aba4b;font-size: 10px;color:#9aba4b">_</div>
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 </body>
 </html>
