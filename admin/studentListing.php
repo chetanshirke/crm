@@ -72,7 +72,7 @@ function att(str, str1, str2) {
 	</ul>
 <div class="clr"></div>
 </div>  
-	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" height="300px;" style="border:1px solid #999999;font-family:Courier;">
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" height="100%;" style="border:1px solid #999999;font-family:Courier;">
 		<tr>
 			<td align="left" valign="top">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">

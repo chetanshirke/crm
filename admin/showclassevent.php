@@ -1,24 +1,10 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
-
-if($_POST['btnSave']!='')
-{
-	$studName = $_POST['txtname'];
-	$studContact = $_POST['txtcontact'];
-	$studEmail = $_POST['txtemail'];
-	$teacherId  = $_POST['hiddenteacher'];
 	
-	echo $sql = "INSERT INTO SMASTER ( SNAME, SPHONE, SEMAIL,  SCID ) VALUES ('".$studName."','".$studContact."','".$studEmail."','".$teacherId."' )";
-	mysql_query($sql);
-}
-
-$sqlList			=	"SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=".$_GET['tid']." and b.EMPID=".$_GET['tid']." and b.CID=c.CID and a.STATUS='Active'";
+$sqlList			=	"SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, a.STATUS, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=".$_GET['tid']." and b.EMPID=".$_GET['tid']." and b.CID=c.CID";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
 
-$sql	                        =       "SELECT SID, SNAME, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']." ORDER BY SNAME ASC";
-$result                         =       mysql_query($sql) or die(mysql_error());
-$total	                        =       mysql_num_rows($ressult);
 ?>
 <?php include "header.php"; ?>  
 <style>
@@ -94,13 +80,12 @@ function att(str, str1, str2) {
 							<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 								<tr><td>&nbsp;</td></tr>
 									<tr>
-										<td align="left" width="600"><font color="red"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
-										<td align="right"><font color="gray" size="1">Start Date: <?php echo $rowList['SDATE']; ?></font></td>
-								        	<td align="right"><font color="gray" size="1">End Date: <?php echo $rowList['EDATE']; ?></font></td>
+										<td align="left" width="600"><font color="#e79527" size="4" font-family="tahoma"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
+										<td align="right"><font color="#27bce7" size="3" font-family="tahoma">Start <?php echo $rowList['SDATE']; ?>&nbsp;|&nbsp;End <?php echo $rowList['EDATE']; ?></font></td>
 									</tr>
 								<tr><td>&nbsp;</td></tr>
 									<tr>
-										<td colspan="3"><font color="gray" size="1"><i>Event Details </i></font><br></td>
+										<td colspan="3"><font color="gray" size="2" font-family="tahoma"><i>Event Details </i></font><br></td>
 									</tr>
 								<tr><td>&nbsp;</td></tr>
 									<tr>
@@ -110,10 +95,13 @@ function att(str, str1, str2) {
                                                 				<td height="20" align="right">&nbsp;</td>
                                         				</tr>
 									<tr>
-										<td colspan="3" align="left"><font color="gray" size="1"><i>This event is for <?php if(!$rowList['TYPE']){ echo $rowList['CNAME'];}else{ echo $rowList['TYPE'];} ?></i></font></td>
+										<td colspan="3" align="left"><font color="gray" size="2" font-family="tahoma"><i>This event is for <?php if(!$rowList['TYPE']){ echo $rowList['CNAME'];}else{ echo $rowList['TYPE'];} ?></i></font></td>
 									</tr>
 									<tr>
-										<td colspan="3" align="right"><font color="gray" size="1"><i>Event added by <?php echo $rowList['EMPNAME']; ?></i></font></td>
+										<td colspan="3" align="right"><font color="gray" size="2" font-family="tahoma" ><i>Event added by <?php echo $rowList['EMPNAME']; ?></i></font></td>
+									</tr>
+									<tr>
+										<td colspan="3" align="left"><font color="gray" size="2" font-family="tahoma"><i>This is <?php echo $rowList['STATUS'] ?> event</i></font></td>
 									</tr>
 								<div style="background:#9aba4b;font-size: 0.5px;">&nbsp;</div>
 							</table>

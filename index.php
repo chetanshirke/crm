@@ -33,7 +33,7 @@ $totalList                      =       mysql_num_rows($resList);
 
 <div id="content" align="center">
 <div class="clr"></div>
-<div style="background:#9aba4b;font-size: 10px;">&nbsp;</div>
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 </div>
         <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #999999;font-family:Courier;">
 
@@ -91,12 +91,12 @@ $totalList                      =       mysql_num_rows($resList);
                                                         <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                                                 <tr><td>&nbsp;</td></tr>
                                                                         <tr>
-                                                                                <td align="left" width="600"><font color="#e79527" size="5" font-family="tahoma"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
-                                                                                <td align="right"><font color="gray" size="1">Start Date <?php echo $rowList['SDATE']; ?>&nbsp;&nbsp; End Date <?php echo $rowList['EDATE']; ?></font></td>
+                                                                                <td align="left" width="600"><font color="#e79527" size="4" font-family="tahoma"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
+										<td align="right"><font color="#27bce7" size="3" font-family="tahoma">Start <?php echo $rowList['SDATE']; ?>&nbsp;|&nbsp;End <?php echo $rowList['EDATE']; ?></font></td>
                                                                         </tr>
                                                                 <tr><td height="2">&nbsp;</td></tr>
                                                                         <tr>
-                                                                                <td colspan="3"><font color="gray" size="1"><i>Event Details </i></font><br></td>
+                                                                                <td colspan="3"><font color="gray" size="2" font-family="tahoma"><i>Event Details </i></font><br></td>
                                                                         </tr>
                                                                 <tr><td height="2">&nbsp;</td></tr>
                                                                         <tr>
@@ -106,10 +106,10 @@ $totalList                      =       mysql_num_rows($resList);
                                                                                 <td height="10" align="right">&nbsp;</td>
                                                                         </tr>
                                                                         <tr>
-                                                                                <td colspan="3" align="left"><font color="gray" size="2"><i>This event is for <?php if(!$rowList['TYPE']){ echo $rowList['CNAME'];}else{ echo $rowList['TYPE'];} ?></i></font></td>
+                                                                                <td colspan="3" align="left"><font color="gray" size="2" font-family="tahoma"><i>This event is for <?php if(!$rowList['TYPE']){ echo $rowList['CNAME'];}else{ echo $rowList['TYPE'];} ?></i></font></td>
                                                                         </tr>
                                                                         <tr>
-                                                                                <td colspan="3" align="right"><font color="gray" size="2"><i>Event added by <?php echo $rowList['EMPNAME']; ?></i></font></td>
+                                                                                <td colspan="3" align="right"><font color="gray" size="2" font-family="tahoma"><i>Event added by <?php echo $rowList['EMPNAME']; ?></i></font></td>
                                                                         </tr>
                                                                 <div style="background:#9aba4b;font-size: 0.5px;">&nbsp;</div>
                                                         </table>
@@ -127,7 +127,7 @@ $totalList                      =       mysql_num_rows($resList);
                                 </table>
 	</table>
 </table>
-<div style="background:#9aba4b;font-size: 10px;">&nbsp;</div>
+<div style="background:#9aba4b;font-size: 4px;">&nbsp;</div>
 </div>
 </body>
 </html>
