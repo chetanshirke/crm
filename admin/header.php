@@ -8,6 +8,6 @@
 <body>
 <div id="page">
 <div id="header">
-	<div id="logo"><img src="../images/logo.jpg" border="0" height="0px" /></a></div>
+	<div id="logo"><img src="../images/logo.png" border="0" height="0px" /></a></div>
 </div>
 <div class="clr"></div>

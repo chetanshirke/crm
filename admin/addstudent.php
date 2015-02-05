@@ -15,7 +15,7 @@ if($_POST['btnSave']!='')
 	mysql_query($sql);
 }
 
-$sqlList                        =       "SELECT SID, SNAME, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']." ORDER BY SNAME ASC";
+$sqlList                        =       "SELECT SID, SNAME, SPHONE, SEMAIL, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']." ORDER BY SNAME ASC";
 $resList                        =       mysql_query($sqlList) or die(mysql_error());
 $totalList                      =       mysql_num_rows($resList);
 
@@ -86,11 +86,10 @@ $totalList                      =       mysql_num_rows($resList);
                                                                 </td>
 							</tr>
                                                         <tr>
-                                                                <td width="200px" style="height:30px">
+                                                                <td style="height:30px">
+                                                                <td style="height:30px">
                                                                  Active<input type="radio" name="txtstatus" value="active" checked> Inactive<input type="radio" name="txtstatus" value="inactive">
                                                                 </td>
-                                                        </tr>
-							<tr>
 								<td>
 									<input type="hidden" name="hiddenteacher" id="hiddenteacher" value="<?php echo $_GET['tid']?>" style="width:230px">
 								</td>
@@ -117,7 +116,9 @@ $totalList                      =       mysql_num_rows($resList);
                                                 <table width="99%" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                                         <tr class="rowHead" style="border:1px solid #999999;">
                                                                 <td height="5" width="50px" align="center">Sr.No</td>
-                                                                <td height="5">&nbsp;Student Name</td>
+                                                                <td height="5">&nbsp;Name</td>
+                                                                <td height="5">&nbsp;Contact No</td>
+                                                                <td height="5">&nbsp;Email Address</td>
                                                                 <td height="5" align="center">Status</td>
                                                         </tr>
                                                         <?php
@@ -130,7 +131,9 @@ $totalList                      =       mysql_num_rows($resList);
                                                         <tr style="border:1px solid #999999;">
                                                                 <td height="5" align="center"><?php echo $i++; ?>.</td>
                                                                 <td height="5">&nbsp;<?php echo $rowList['SNAME']; ?></td>
-                                                                <td height="5">&nbsp;<?php echo $rowList['STATUS']; ?></td>
+                                                                <td height="5">&nbsp;<?php echo $rowList['SPHONE']; ?></td>
+                                                                <td height="5">&nbsp;<a href="mailto:<?php echo $rowList['SEMAIL']; ?>"><?php echo $rowList['SEMAIL']; ?></a></td>
+                                                                <td height="5">&nbsp;<a href="editstdetails.php?sid=<?php echo $rowList['SID']; ?>"><?php echo $rowList['STATUS']; ?></a></td>
                                                         </tr>
                                                         <?php }
                                                         }

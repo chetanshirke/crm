@@ -12,7 +12,7 @@ if($_POST['btnSave']!='')
 	mysql_query($sql);
 }
 
-$sqlList			=	"SELECT SID, SNAME, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']." ORDER BY SNAME ASC";
+$sqlList			=	"SELECT SID, SNAME, STATUS FROM SMASTER WHERE SCID=".$_GET['tid']." and STATUS='active' ORDER BY SNAME ASC";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
 ?>

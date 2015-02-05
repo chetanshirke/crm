@@ -23,6 +23,13 @@ $totalList                      =       mysql_num_rows($resList);
 ?>
 <?php include "header.php"; ?>  
 
+<script type="text/javascript" src="editor/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea"
+ });
+</script>
+
 <link rel="stylesheet" href="datepicker/jquery-ui.css" />
 <script src="datepicker/jquery-1.9.1.js"></script>
 <script src="datepicker/jquery-ui.js"></script>
@@ -89,33 +96,33 @@ $(document).ready(
                                                 <form name="frm" action="" method="post">
                                                 <table width="99%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
                                                         <tr>
-                                                                <td width="170px" style="height:30px">Event Title:</td>
+                                                                <td width="100px" style="height:30px">Event Title:</td>
                                                                 <td>
                                                                         <input type="text" name="txtname" id="txtname" value="" style="width:230px">
                                                                 </td>
                                                         </tr>
                                                         <tr>
-                                                                <td width="170px" style="height:30px">Event Start date:</td>
+                                                                <td width="100px" style="height:30px">Event Start date:</td>
                                                                 <td height="5"><input type="date" name="txtsdate" id="sdatepicker"></td>
                                                         </tr>
                                                         <tr>
                                                         </tr>
                                                         <tr>
-								<td width="170px" style="height:30px">Event End date:</td>
+								<td width="100px" style="height:30px">Event End date:</td>
                                                                 <td height="5"><input type="date" name="txtedate" id="edatepicker"></td>
                                                         </tr>
                                                         <tr>
-								<td width="170px" style="height:30px">Event Details:</td>
-								<td><textarea rows="4" cols="50" name="txtdetails" id="txtdetails"></textarea></td>
+								<td width="100px" style="height:30px">Event Details:</td>
+								<td width="800px"><textarea rows="27" cols="150" name="txtdetails" id="txtdetails"></textarea></td>
                                                         </tr>
                                                         <tr>
-								<td width="170px" style="height:30px">Event Status:</td>
+								<td width="100px" style="height:30px">Event Status:</td>
                                                                 <td style="height:30px">
                                                                  Active<input type="radio" name="txtstatus" value="active" checked> Inactive<input type="radio" name="txtstatus" value="inactive">
                                                                 </td>
                                                         </tr>
                                                         <tr>
-								<td width="170px" style="height:30px">Event For:</td>
+								<td width="100px" style="height:30px">Event For:</td>
                                                                 <td width="200px" style="height:30px">
                                                                 <select name="txttype" id="txttype" >
                                                                 <option value="" selected>school</option>
@@ -125,7 +132,7 @@ $(document).ready(
                                                                         while($rowList=mysql_fetch_assoc($resList))
                                                                         {
                                                                         ?>
-                                                                <option value=<?php echo $rowList['CNAME']; ?>><?php echo $rowList['CNAME']; ?></option>
+                                                                <option value=<?php echo $rowList['CNAME']; ?><?php echo $rowList['CNAME']; ?></option>
                                                                         <?php }
                                                                         }
                                                                         else
