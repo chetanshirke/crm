@@ -91,7 +91,7 @@ $totalList                      =       mysql_num_rows($resList);
                                                         <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                                                                 <tr><td>&nbsp;</td></tr>
                                                                         <tr>
-                                                                                <td align="left" width="600"><font color="#e79527" size="4" font-family="tahoma"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
+                                                                                <td align="left"><font color="#e79527" size="4" font-family="tahoma"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
 										<td align="right"><font color="#27bce7" size="3" font-family="tahoma">Start <?php echo $rowList['SDATE']; ?>&nbsp;|&nbsp;End <?php echo $rowList['EDATE']; ?></font></td>
                                                                         </tr>
                                                                 <tr><td height="2">&nbsp;</td></tr>
