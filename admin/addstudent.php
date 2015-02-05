@@ -3,7 +3,9 @@ include_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
 
 if($_POST['btnSave']!='')
 {
-	$studName = $_POST['txtname'];
+	$studName = $_POST['txtfirstname'];
+	$studName .=  " ";
+	$studName .=  $_POST['txtlastname'];
 	$studContact = $_POST['txtcontact'];
 	$studEmail = $_POST['txtemail'];
 	$studstatus = $_POST['txtstatus'];
@@ -60,19 +62,25 @@ $totalList                      =       mysql_num_rows($resList);
 						<form name="frm" action="" method="post">
 						<table width="99%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
 							<tr>
-								<td width="170px" style="height:30px">Student Name:</td>
+								<td width="170px" style="height:30px">First Name:</td>
 								<td>
-									<input type="text" name="txtname" id="txtname" value="" style="width:230px">
+									<input type="text" name="txtfirstname" id="txtfirstname" value="" style="width:230px">
 								</td>
 							</tr>
 							<tr>
-                                                                <td width="170px" style="height:30px">Student Contact:</td>
+								<td width="170px" style="height:30px">Last Name:</td>
+								<td>
+									<input type="text" name="txtlastname" id="txtlastname" value="" style="width:230px">
+								</td>
+							</tr>
+							<tr>
+                                                                <td width="170px" style="height:30px">Contact No:</td>
                                                                 <td>
                                                                         <input type="text" name="txtcontact" id="txtcontact" value="null" style="width:230px">
                                                                 </td>
 							</tr>
 							<tr>
-                                                                <td width="170px" style="height:30px">Student Email:</td>
+                                                                <td width="170px" style="height:30px">Email Address:</td>
                                                                 <td>
                                                                         <input type="text" name="txtemail" id="txtemail" value="null" style="width:230px">
                                                                 </td>
