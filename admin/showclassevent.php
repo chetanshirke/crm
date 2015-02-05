@@ -64,10 +64,7 @@ function att(str, str1, str2) {
 	<table width="100%" border="0" height="100%" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #999999;font-family:Courier;">
 		<tr>
 			<td align="left" valign="top">
-				<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-					<tr>
-						<td height="20" align="right">&nbsp;</td>
-					</tr>
+				<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 					<tr>
 						<td height="40" style="padding-left:10px;">
 									<?php 
@@ -77,10 +74,10 @@ function att(str, str1, str2) {
 									while($rowList=mysql_fetch_assoc($resList))
 									{
 									?>
-							<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+							<table width="99%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 								<tr><td>&nbsp;</td></tr>
 									<tr>
-										<td align="left" width="600"><font color="#e79527" size="4" font-family="tahoma"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
+										<td align="left" width="80%"><font color="#e79527" size="4" font-family="tahoma"><b><i><?php echo $rowList['CEVNAME']; ?></i></b></font></td>
 										<td align="right"><font color="#27bce7" size="3" font-family="tahoma">Start <?php echo $rowList['SDATE']; ?>&nbsp;|&nbsp;End <?php echo $rowList['EDATE']; ?></font></td>
 									</tr>
 								<tr><td>&nbsp;</td></tr>
@@ -101,7 +98,7 @@ function att(str, str1, str2) {
 										<td colspan="3" align="right"><font color="gray" size="2" font-family="tahoma" ><i>Event added by <?php echo $rowList['EMPNAME']; ?></i></font></td>
 									</tr>
 									<tr>
-										<td colspan="3" align="left"><font color="gray" size="2" font-family="tahoma"><i>This is <?php echo $rowList['STATUS'] ?> event</i></font></td>
+										<td colspan="3" align="left"><font color="gray" size="2" font-family="tahoma"><i><?php echo $rowList['STATUS'] ?> event</i></font></td>
 									</tr>
 								<div style="background:#9aba4b;font-size: 0.5px;">&nbsp;</div>
 							</table>

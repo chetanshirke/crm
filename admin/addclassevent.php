@@ -90,7 +90,7 @@ $(document).ready(
                                                 <form name="frm" action="" method="post">
                                                 <table width="99%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
                                                         <tr>
-                                                                <td width="170px" style="height:30px">Event Name:</td>
+                                                                <td width="170px" style="height:30px">Event Title:</td>
                                                                 <td>
                                                                         <input type="text" name="txtname" id="txtname" value="" style="width:230px">
                                                                 </td>
