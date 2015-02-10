@@ -1,7 +1,7 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT']."/includes/config.php");
 	
-$sqlList			=	"SELECT a.CEVID, a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, a.STATUS, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=".$_GET['tid']." and b.EMPID=".$_GET['tid']." and b.CID=c.CID and a.EDATE >= curdate() ORDER BY a.SDATE ASC";
+$sqlList			=	"SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, a.STATUS, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=".$_GET['tid']." and b.EMPID=".$_GET['tid']." and b.CID=c.CID";
 $resList			=	mysql_query($sqlList) or die(mysql_error());
 $totalList			= 	mysql_num_rows($resList);
 
@@ -98,9 +98,10 @@ function att(str, str1, str2) {
 										<td colspan="3" align="right"><font color="gray" size="2" font-family="tahoma" ><i>Event added by <?php echo $rowList['EMPNAME']; ?></i></font></td>
 									</tr>
 									<tr>
-										<td colspan="3" align="left"><font color="gray" size="2" font-family="tahoma"><i><a href="editclassevent.php?cevid=<?php echo $rowList['CEVID']; ?>&tid=<?php echo $_GET['tid']?>">Edit This Event&nbsp;</a> <?php echo $rowList['STATUS'] ?> event.</i></font></td>
+										<td colspan="3" align="left"><font color="gray" size="2" font-family="tahoma"><i><?php echo $rowList['STATUS'] ?> event</i></font></td>
 									</tr>
 									<tr>
+										<td>&nbsp;<a href="editstdevent.php?cevid=<?php echo $rowList['CEVID']; ?>&tid=<?php echo $_GET['tid']?>">Edit This Event</a></td>
 									</tr>
 								<div style="background:#9aba4b;font-size: 0.5px;">&nbsp;</div>
 							</table>

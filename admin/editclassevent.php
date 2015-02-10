@@ -12,7 +12,7 @@ if($_POST['btnSave']!='')
 	$status = $_POST['txtstatus'];
         
         $details = mysql_real_escape_string($details);	
-	$sql = "INSERT INTO CEVENT ( EMPID, CEVNAME, SDATE, EDATE, CEVDETAILS, TYPE, STATUS ) VALUES ( '".$teacherId."', '".$name."','".$start."','".$end."','".$details."', '".$type."', '".$status."' )";
+	$sql = "UPDATE CEVENT SET EMPID='".$teacherId."', CEVNAME='".$name."', SDATE='".$start."', EDATE='".$end."', CEVDETAILS='".$details."', TYPE='".$type."', STATUS='".$status."' WHERE CEVID=".$_GET['cevid']."";
 	mysql_query($sql);
 }
 
@@ -20,6 +20,9 @@ $sqlList                        =       "SELECT CID, CNAME FROM CMASTER ORDER BY
 $resList                        =       mysql_query($sqlList) or die(mysql_error());
 $totalList                      =       mysql_num_rows($resList);
 
+$sql                       	=       "SELECT * FROM CEVENT WHERE CEVID=".$_GET['cevid']."";
+$result	                        =       mysql_query($sql) or die(mysql_error());
+$total	                        =       mysql_num_rows($result);
 ?>
 <?php include "header.php"; ?>  
 
@@ -29,7 +32,6 @@ tinymce.init({
     selector: "textarea"
  });
 </script>
-
 <link rel="stylesheet" href="datepicker/jquery-ui.css" />
 <script src="datepicker/jquery-1.9.1.js"></script>
 <script src="datepicker/jquery-ui.js"></script>
@@ -76,8 +78,11 @@ $(document).ready(
 <div id="menu">
 	<ul>
 		<li><a href="addstudent.php?tid=<?php echo $_GET['tid']?>"><b>Add Student</b></a></li>
-		<li><a href="#" class="active"><b>Add Event</b></a></li>
-		<li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Events</b></a></li>
+		<li><a href="addclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Add Event</b></a></li>
+                <li><a href="showclassevent.php?tid=<?php echo $_GET['tid']?>"><b>Events</b></a></li>
+                <ul>
+                        <li><a href="#" class="active"><b>Edit Event</b></a></li>
+                </ul>
 		<li><a href="studentListing.php?tid=<?php echo $_GET['tid']?>"><b>Student Attendance</b></a></li>
 		<li><a href="stdattreport.php?tid=<?php echo $_GET['tid']?>"><b>Attendance Report</b></a></li>
 		<li><a href="/index.php?logout"><b>Logout</b></a></li>
@@ -95,37 +100,50 @@ $(document).ready(
 						<td height="40" style="padding-left:10px;">
                                                 <form name="frm" action="" method="post">
                                                 <table width="99%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #999999;padding:5px;display:">
+                                                                        <?php
+                                                                        if($total > 0)
+                                                                        {
+                                                                        while($row=mysql_fetch_assoc($result))
+                                                                        {
+                                                                        ?>
                                                         <tr>
                                                                 <td width="100px" style="height:30px">Event Title:</td>
                                                                 <td>
-                                                                        <input type="text" name="txtname" id="txtname" value="" style="width:230px">
+                                                                        <input type="text" name="txtname" id="txtname" value="<?php echo $row['CEVNAME'];?>" style="width:230px">
                                                                 </td>
                                                         </tr>
                                                         <tr>
                                                                 <td width="100px" style="height:30px">Event Start date:</td>
-                                                                <td height="5"><input type="date" name="txtsdate" id="sdatepicker"></td>
+                                                                <td height="5"><input type="date" value="<?php echo $row['SDATE'];?>" name="txtsdate" id="sdatepicker"></td>
                                                         </tr>
                                                         <tr>
                                                         </tr>
                                                         <tr>
 								<td width="100px" style="height:30px">Event End date:</td>
-                                                                <td height="5"><input type="date" name="txtedate" id="edatepicker"></td>
+                                                                <td height="5"><input type="date" value="<?php echo $row['EDATE'];?>"  name="txtedate" id="edatepicker"></td>
                                                         </tr>
                                                         <tr>
 								<td width="100px" style="height:30px">Event Details:</td>
-								<td width="800px"><textarea rows="27" cols="150" name="txtdetails" id="txtdetails"></textarea></td>
+								<td width="800px"><textarea rows="27" cols="150" name="txtdetails" id="txtdetails"><?php echo $row['CEVDETAILS'];?></textarea></td>
                                                         </tr>
                                                         <tr>
 								<td width="100px" style="height:30px">Event Status:</td>
                                                                 <td style="height:30px">
-                                                                 Active<input type="radio" name="txtstatus" value="active" checked> Inactive<input type="radio" name="txtstatus" value="inactive">
+                                                                 Active<input type="radio" name="txtstatus" value="active" <?php if($row['STATUS'] === "active") { echo "checked" ; } ?>> Inactive<input type="radio" name="txtstatus" value="inactive" <?php if($row['STATUS'] === "inactive") { echo "checked" ; } ?>>
+							<?php $type = $row['TYPE']; ?>
                                                                 </td>
                                                         </tr>
+                                                                        <?php }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                        ?>
+                                                        <?php   } ?>
                                                         <tr>
 								<td width="100px" style="height:30px">Event For:</td>
                                                                 <td width="200px" style="height:30px">
                                                                 <select name="txttype" id="txttype" >
-                                                                <option value="school" selected>school</option>
+                                                                <option value="<?php echo $type ?>" selected><?php echo $type ?></option>
                                                                         <?php
                                                                         if($totalList > 0)
                                                                         {

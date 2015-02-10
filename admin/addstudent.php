@@ -119,7 +119,8 @@ $totalList                      =       mysql_num_rows($resList);
                                                                 <td height="5">&nbsp;Name</td>
                                                                 <td height="5">&nbsp;Contact No</td>
                                                                 <td height="5">&nbsp;Email Address</td>
-                                                                <td height="5" align="center">Status</td>
+                                                                <td height="5">&nbsp;Status</td>
+                                                                <td height="5">&nbsp;Edit Student Details</td>
                                                         </tr>
                                                         <?php
                                                         if($totalList > 0)
@@ -133,7 +134,8 @@ $totalList                      =       mysql_num_rows($resList);
                                                                 <td height="5">&nbsp;<?php echo $rowList['SNAME']; ?></td>
                                                                 <td height="5">&nbsp;<?php echo $rowList['SPHONE']; ?></td>
                                                                 <td height="5">&nbsp;<a href="mailto:<?php echo $rowList['SEMAIL']; ?>"><?php echo $rowList['SEMAIL']; ?></a></td>
-                                                                <td height="5">&nbsp;<a href="editstdetails.php?sid=<?php echo $rowList['SID']; ?>"><?php echo $rowList['STATUS']; ?></a></td>
+                                                                <td height="5">&nbsp;<?php echo $rowList['STATUS']; ?></td>
+                                                                <td height="5">&nbsp;<a href="editstdetails.php?sid=<?php echo $rowList['SID']; ?>&tid=<?php echo $_GET['tid']?>">Edit</a></td>
                                                         </tr>
                                                         <?php }
                                                         }

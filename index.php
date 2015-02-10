@@ -9,7 +9,7 @@ if($_POST["txtUserName"]!='')
         accountLogin($username, $password);
 }
 
-$sqlList                        =       "SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=b.EMPID and b.CID=c.CID and a.STATUS='Active' ORDER BY a.SDATE ASC";
+$sqlList                        =       "SELECT a.CEVNAME, a.SDATE, a.EDATE, a.DTIME, a.CEVDETAILS, a.TYPE, b.EMPNAME, c.CNAME FROM CEVENT a, EMASTER b, CMASTER c  WHERE a.EMPID=b.EMPID and b.CID=c.CID and a.STATUS='Active' and a.EDATE >= curdate() ORDER BY a.SDATE ASC";
 $resList                        =       mysql_query($sqlList) or die(mysql_error());
 $totalList                      =       mysql_num_rows($resList);
 
